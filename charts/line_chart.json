@@ -1,0 +1,97 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "National household mean and median income over time in Malaysia.",
+    "data": {
+        "url": "../data/hh_income.csv"
+    },
+    "width": 700,
+    "height": 420,
+    "transform": [
+        {
+            "fold": [
+                "income_mean",
+                "income_median"
+            ],
+            "as": [
+                "income_type",
+                "income_value"
+            ]
+        },
+        {
+            "calculate": "datum.income_type == 'income_mean' ? 'Mean Income' : 'Median Income'",
+            "as": "income_label"
+        }
+    ],
+    "mark": {
+        "type": "line",
+        "point": {
+            "filled": true,
+            "size": 80
+        },
+        "strokeWidth": 3
+    },
+    "encoding": {
+        "x": {
+            "field": "date",
+            "type": "temporal",
+            "title": "Year",
+            "axis": {
+                "format": "%Y",
+                "labelAngle": 0
+            }
+        },
+        "y": {
+            "field": "income_value",
+            "type": "quantitative",
+            "title": "Household Income (RM)"
+        },
+        "color": {
+            "field": "income_label",
+            "type": "nominal",
+            "title": "Income Measure",
+            "scale": {
+                "domain": [
+                    "Mean Income",
+                    "Median Income"
+                ],
+                "range": [
+                    "#8c2f39",
+                    "#d9a441"
+                ]
+            }
+        },
+        "tooltip": [
+            {
+                "field": "date",
+                "type": "temporal",
+                "title": "Year",
+                "format": "%Y"
+            },
+            {
+                "field": "income_label",
+                "type": "nominal",
+                "title": "Measure"
+            },
+            {
+                "field": "income_value",
+                "type": "quantitative",
+                "title": "Income (RM)",
+                "format": ",.0f"
+            }
+        ]
+    },
+    "config": {
+        "background": "#fffdf8",
+        "axis": {
+            "labelFont": "Helvetica Neue",
+            "titleFont": "Helvetica Neue",
+            "gridColor": "#d9d2c3",
+            "tickColor": "#d9d2c3",
+            "domainColor": "#7a6f5f"
+        },
+        "legend": {
+            "labelFont": "Helvetica Neue",
+            "titleFont": "Helvetica Neue"
+        }
+    }
+}
