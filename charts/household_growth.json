@@ -1,0 +1,60 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Growth in Malaysian households over time.",
+    "data": {
+        "url": "../data/hh_lq.csv"
+    },
+    
+    "width": 700,
+    "height": 420,
+    "mark": {
+        "type": "line",
+        "point": {
+            "filled": true,
+            "size": 70,
+            "color": "#8c2f39"
+        },
+        "strokeWidth": 3,
+        "color": "#8c2f39"
+    },
+    "encoding": {
+        "x": {
+            "field": "date",
+            "type": "temporal",
+            "title": "Year",
+            "axis": {
+                "format": "%Y",
+                "labelAngle": 0
+            }
+        },
+        "y": {
+            "field": "households",
+            "type": "quantitative",
+            "title": "Number of Households" 
+        },
+        "tooltip": [
+            {
+                "field": "date",
+                "type": "temporal",
+                "title": "Year",
+                "format": "%Y"
+            },
+            {
+                "field": "households",
+                "type": "quantitative",
+                "title": "Households",
+                "format": ",.0f"
+            }
+        ]
+    },
+    "config": {
+        "background": "#fffdf8",
+        "axis": {
+            "labelFont": "Helvetica Neue",
+            "titleFont": "Helvetica Neue",
+            "gridColor": "#d9d2c3",
+            "tickColor": "#d9d2c3",
+            "domainColor": "#7a6f5f"
+        }
+    }
+}

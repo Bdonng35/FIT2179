@@ -338,42 +338,42 @@ date,state,parlimen,income_median,income_mean
 2019-01-01,Selangor,P.113 Sepang,8398,11724
 2022-01-01,Selangor,P.113 Sepang,12445,13187
 2024-01-01,Selangor,P.113 Sepang,11112,15082
-2019-01-01,W.P. Kuala Lumpur,P.114 Kepong,11274,13087
-2022-01-01,W.P. Kuala Lumpur,P.114 Kepong,10412,12085
-2024-01-01,W.P. Kuala Lumpur,P.114 Kepong,10570,14723
-2019-01-01,W.P. Kuala Lumpur,P.115 Batu,9426,11019
-2022-01-01,W.P. Kuala Lumpur,P.115 Batu,8618,10136
-2024-01-01,W.P. Kuala Lumpur,P.115 Batu,9929,11445
-2019-01-01,W.P. Kuala Lumpur,P.116 Wangsa Maju,9716,11153
-2022-01-01,W.P. Kuala Lumpur,P.116 Wangsa Maju,9593,11304
-2024-01-01,W.P. Kuala Lumpur,P.116 Wangsa Maju,9974,12276
-2019-01-01,W.P. Kuala Lumpur,P.117 Segambut,15342,20521
-2022-01-01,W.P. Kuala Lumpur,P.117 Segambut,13891,22319
-2024-01-01,W.P. Kuala Lumpur,P.117 Segambut,15867,22001
-2019-01-01,W.P. Kuala Lumpur,P.118 Setiawangsa,9651,12281
-2022-01-01,W.P. Kuala Lumpur,P.118 Setiawangsa,9202,11507
-2024-01-01,W.P. Kuala Lumpur,P.118 Setiawangsa,11180,18478
-2019-01-01,W.P. Kuala Lumpur,P.119 Titiwangsa,9827,11921
-2022-01-01,W.P. Kuala Lumpur,P.119 Titiwangsa,10418,13506
-2024-01-01,W.P. Kuala Lumpur,P.119 Titiwangsa,10669,12572
-2019-01-01,W.P. Kuala Lumpur,P.120 Bukit Bintang,11060,13677
-2022-01-01,W.P. Kuala Lumpur,P.120 Bukit Bintang,11481,14634
-2024-01-01,W.P. Kuala Lumpur,P.120 Bukit Bintang,10966,15318
-2019-01-01,W.P. Kuala Lumpur,P.121 Lembah Pantai,9801,13081
-2022-01-01,W.P. Kuala Lumpur,P.121 Lembah Pantai,9680,12982
-2024-01-01,W.P. Kuala Lumpur,P.121 Lembah Pantai,10331,12817
-2019-01-01,W.P. Kuala Lumpur,P.122 Seputeh,11113,13489
-2022-01-01,W.P. Kuala Lumpur,P.122 Seputeh,11355,13460
-2024-01-01,W.P. Kuala Lumpur,P.122 Seputeh,10932,12001
-2019-01-01,W.P. Kuala Lumpur,P.123 Cheras,10264,12031
-2022-01-01,W.P. Kuala Lumpur,P.123 Cheras,9563,11220
-2024-01-01,W.P. Kuala Lumpur,P.123 Cheras,10228,12119
-2019-01-01,W.P. Kuala Lumpur,P.124 Bandar Tun Razak,9432,11266
-2022-01-01,W.P. Kuala Lumpur,P.124 Bandar Tun Razak,8769,11142
-2024-01-01,W.P. Kuala Lumpur,P.124 Bandar Tun Razak,9360,10565
-2019-01-01,W.P. Putrajaya,P.125 Putrajaya,9983,12840
-2022-01-01,W.P. Putrajaya,P.125 Putrajaya,10056,13473
-2024-01-01,W.P. Putrajaya,P.125 Putrajaya,10769,13846
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.114 Kepong,11274,13087
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.114 Kepong,10412,12085
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.114 Kepong,10570,14723
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.115 Batu,9426,11019
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.115 Batu,8618,10136
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.115 Batu,9929,11445
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.116 Wangsa Maju,9716,11153
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.116 Wangsa Maju,9593,11304
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.116 Wangsa Maju,9974,12276
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.117 Segambut,15342,20521
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.117 Segambut,13891,22319
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.117 Segambut,15867,22001
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.118 Setiawangsa,9651,12281
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.118 Setiawangsa,9202,11507
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.118 Setiawangsa,11180,18478
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.119 Titiwangsa,9827,11921
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.119 Titiwangsa,10418,13506
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.119 Titiwangsa,10669,12572
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.120 Bukit Bintang,11060,13677
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.120 Bukit Bintang,11481,14634
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.120 Bukit Bintang,10966,15318
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.121 Lembah Pantai,9801,13081
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.121 Lembah Pantai,9680,12982
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.121 Lembah Pantai,10331,12817
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.122 Seputeh,11113,13489
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.122 Seputeh,11355,13460
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.122 Seputeh,10932,12001
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.123 Cheras,10264,12031
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.123 Cheras,9563,11220
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.123 Cheras,10228,12119
+2019-01-01,Wilayah Persekutuan Kuala Lumpur,P.124 Bandar Tun Razak,9432,11266
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,P.124 Bandar Tun Razak,8769,11142
+2024-01-01,Wilayah Persekutuan Kuala Lumpur,P.124 Bandar Tun Razak,9360,10565
+2019-01-01,Wilayah Persekutuan Putrajaya,P.125 Putrajaya,9983,12840
+2022-01-01,Wilayah Persekutuan Putrajaya,P.125 Putrajaya,10056,13473
+2024-01-01,Wilayah Persekutuan Putrajaya,P.125 Putrajaya,10769,13846
 2019-01-01,Negeri Sembilan,P.126 Jelebu,4031,5341
 2022-01-01,Negeri Sembilan,P.126 Jelebu,3692,4633
 2024-01-01,Negeri Sembilan,P.126 Jelebu,3736,4676
@@ -494,9 +494,9 @@ date,state,parlimen,income_median,income_mean
 2019-01-01,Johor,P.165 Tanjung Piai,5118,6904
 2022-01-01,Johor,P.165 Tanjung Piai,6197,7574
 2024-01-01,Johor,P.165 Tanjung Piai,6609,7656
-2019-01-01,W.P. Labuan,P.166 Labuan,6726,8319
-2022-01-01,W.P. Labuan,P.166 Labuan,6904,8250
-2024-01-01,W.P. Labuan,P.166 Labuan,7383,8555
+2019-01-01,Wilayah Persekutuan Labuan,P.166 Labuan,6726,8319
+2022-01-01,Wilayah Persekutuan Labuan,P.166 Labuan,6904,8250
+2024-01-01,Wilayah Persekutuan Labuan,P.166 Labuan,7383,8555
 2019-01-01,Sabah,P.167 Kudat,2346,3797
 2022-01-01,Sabah,P.167 Kudat,2764,4066
 2024-01-01,Sabah,P.167 Kudat,3100,4387

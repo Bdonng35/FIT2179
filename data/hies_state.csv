@@ -12,6 +12,6 @@ date,state,income_mean,income_median,expenditure_mean,gini,poverty
 2022-01-01,Terengganu,7248,5878,4796,0.32631,6.2
 2022-01-01,Sabah,6171,4577,3342,0.39491,19.7
 2022-01-01,Sarawak,6457,4978,3915,0.3818,10.8
-2022-01-01,W.P. Kuala Lumpur,13325,10234,7823,0.3796,1.4
-2022-01-01,W.P. Labuan,8250,6904,4176,0.30028,2.5
-2022-01-01,W.P. Putrajaya,13473,10056,8897,0.3678,0.1
+2022-01-01,Wilayah Persekutuan Kuala Lumpur,13325,10234,7823,0.3796,1.4
+2022-01-01,Wilayah Persekutuan Labuan,8250,6904,4176,0.30028,2.5
+2022-01-01,Wilayah Persekutuan Putrajaya,13473,10056,8897,0.3678,0.1
