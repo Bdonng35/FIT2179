@@ -1,0 +1,406 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 760,
+  "height": 460,
+  "title": "Gini Coefficient Trends Across States",
+  "data": {
+    "url": "../data/hies_state.csv"
+  },
+  "params": [
+    {
+      "name": "StartYear",
+      "value": 1974,
+      "bind": {
+        "input": "range",
+        "min": 1974,
+        "max": 2022,
+        "step": 1,
+        "name": "Start year: "
+      }
+    },
+    {
+      "name": "EndYear",
+      "value": 2022,
+      "bind": {
+        "input": "range",
+        "min": 1974,
+        "max": 2022,
+        "step": 1,
+        "name": "End year: "
+      }
+    },
+    {
+      "name": "FocusState",
+      "value": "Show All",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Show All",
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Labuan",
+          "Melaka",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Pulau Pinang",
+          "Putrajaya",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "name": "Focus state: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "calculate": "year(toDate(datum.date))",
+      "as": "year"
+    },
+    {
+      "calculate": "toNumber(datum.gini)",
+      "as": "gini_num"
+    },
+    {
+      "filter": "datum.year >= StartYear && datum.year <= EndYear"
+    },
+    {
+      "calculate": "FocusState == 'Show All' ? 'all' : (datum.state == FocusState ? 'focus' : 'other')",
+      "as": "focus_status"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Year",
+          "scale": {
+            "domain": [1974, 2022],
+            "nice": false
+          },
+          "axis": {
+            "values": [1974, 1976, 1979, 1984, 1987, 1989, 1992, 1995, 1997, 1999, 2002, 2004, 2007, 2009, 2012, 2014, 2016, 2019, 2022],
+            "labelAngle": 0,
+            "labelFontSize": 11,
+            "format": "d"
+          }
+        },
+        "y": {
+          "field": "gini_num",
+          "type": "quantitative",
+          "title": "Gini Coefficient",
+          "scale": {
+            "domain": [0.30, 0.62]
+          },
+          "axis": {
+            "format": ".2f",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "scale": {
+            "domain": [
+              "Johor",
+              "Kedah",
+              "Kelantan",
+              "Kuala Lumpur",
+              "Labuan",
+              "Melaka",
+              "Negeri Sembilan",
+              "Pahang",
+              "Perak",
+              "Perlis",
+              "Pulau Pinang",
+              "Putrajaya",
+              "Sabah",
+              "Sarawak",
+              "Selangor",
+              "Terengganu"
+            ],
+            "range": [
+              "#332288",
+              "#88CCEE",
+              "#44AA99",
+              "#117733",
+              "#999933",
+              "#DDCC77",
+              "#6F86C9",
+              "#3E5C76",
+              "#AA4499",
+              "#661100",
+              "#6699CC",
+              "#888888",
+              "#1f77b4",
+              "#ff7f0e",
+              "#9467bd",
+              "#17becf"
+            ]
+          },
+          "legend": {
+            "orient": "right",
+            "direction": "vertical",
+            "columns": 1,
+            "symbolType": "circle",
+            "symbolSize": 90
+          }
+        },
+        "detail": {
+          "field": "state"
+        },
+        "order": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.focus_status == 'focus'",
+            "value": 3.5
+          },
+          "value": 1.8
+        },
+        "opacity": {
+          "condition": [
+            {
+              "test": "datum.focus_status == 'focus'",
+              "value": 1
+            },
+            {
+              "test": "datum.focus_status == 'all'",
+              "value": 0.72
+            }
+          ],
+          "value": 0.12
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.focus_status == 'focus' || datum.focus_status == 'all'"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 48,
+        "stroke": "#fffdf8",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "gini_num",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Johor",
+              "Kedah",
+              "Kelantan",
+              "Kuala Lumpur",
+              "Labuan",
+              "Melaka",
+              "Negeri Sembilan",
+              "Pahang",
+              "Perak",
+              "Perlis",
+              "Pulau Pinang",
+              "Putrajaya",
+              "Sabah",
+              "Sarawak",
+              "Selangor",
+              "Terengganu"
+            ],
+            "range": [
+              "#332288",
+              "#88CCEE",
+              "#44AA99",
+              "#117733",
+              "#999933",
+              "#DDCC77",
+              "#6F86C9",
+              "#3E5C76",
+              "#AA4499",
+              "#661100",
+              "#6699CC",
+              "#888888",
+              "#1f77b4",
+              "#ff7f0e",
+              "#9467bd",
+              "#17becf"
+            ]
+          }
+        },
+        "detail": {
+          "field": "state"
+        },
+        "opacity": {
+          "condition": [
+            {
+              "test": "datum.focus_status == 'focus'",
+              "value": 1
+            },
+            {
+              "test": "datum.focus_status == 'all'",
+              "value": 0.55
+            }
+          ],
+          "value": 0.12
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "gini_num",
+            "type": "quantitative",
+            "title": "Gini",
+            "format": ".3f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.state == FocusState"
+        },
+        {
+          "window": [
+            {
+              "op": "rank",
+              "as": "rank_order"
+            }
+          ],
+          "sort": [
+            {
+              "field": "year",
+              "order": "descending"
+            }
+          ],
+          "groupby": ["state"]
+        },
+        {
+          "filter": "datum.rank_order == 1"
+        },
+        {
+          "calculate": "'Focused state: ' + datum.state",
+          "as": "focus_label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 13,
+        "fontWeight": "700"
+      },
+      "encoding": {
+        "x": {
+          "value": 520
+        },
+        "y": {
+          "value": 18
+        },
+        "text": {
+          "field": "focus_label",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Johor",
+              "Kedah",
+              "Kelantan",
+              "Kuala Lumpur",
+              "Labuan",
+              "Melaka",
+              "Negeri Sembilan",
+              "Pahang",
+              "Perak",
+              "Perlis",
+              "Pulau Pinang",
+              "Putrajaya",
+              "Sabah",
+              "Sarawak",
+              "Selangor",
+              "Terengganu"
+            ],
+            "range": [
+              "#332288",
+              "#88CCEE",
+              "#44AA99",
+              "#117733",
+              "#999933",
+              "#DDCC77",
+              "#6F86C9",
+              "#3E5C76",
+              "#AA4499",
+              "#661100",
+              "#6699CC",
+              "#888888",
+              "#1f77b4",
+              "#ff7f0e",
+              "#9467bd",
+              "#17becf"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#fffdf8",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#333333",
+      "titleColor": "#333333",
+      "gridColor": "#d9e3ea"
+    },
+    "legend": {
+      "titleFont": "Helvetica Neue",
+      "labelFont": "Helvetica Neue",
+      "labelLimit": 180
+    },
+    "title": {
+      "font": "Playfair Display",
+      "fontSize": 20,
+      "color": "#1f1f1f",
+      "anchor": "start"
+    }
+  }
+}

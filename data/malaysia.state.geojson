@@ -59,7 +59,7 @@
       "id": "KUL",
       "properties": {
         "state_id": 14,
-        "name": "Wilayah Persekutuan Kuala Lumpur",
+        "name": "Kuala Lumpur",
         "state": "KUL"
       },
       "geometry": {
@@ -131,7 +131,7 @@
       "id": "PJY",
       "properties": {
         "state_id": 16,
-        "name": "Wilayah Persekutuan Putrajaya",
+        "name": "Putrajaya",
         "state": "PJY"
       },
       "geometry": {
@@ -143,7 +143,7 @@
       "id": "LBN",
       "properties": {
         "state_id": 15,
-        "name": "Wilayah Persekutuan Labuan",
+        "name": "Labuan",
         "state": "LBN"
       },
       "geometry": {

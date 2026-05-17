@@ -1,0 +1,348 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 760,
+  "height": 500,
+  "title": "Income Versus Gini by State (2022)",
+  "data": {
+    "url": "../data/hh_income_state.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.date == '2022-01-01'"
+    },
+    {
+      "calculate": "toNumber(datum.income_median)",
+      "as": "income_median_num"
+    },
+    {
+      "calculate": "toNumber(datum.income_mean)",
+      "as": "income_mean_num"
+    },
+    {
+      "lookup": "state",
+      "from": {
+        "data": {
+          "values": [
+            {"state": "Johor", "gini": 0.366},
+            {"state": "Kedah", "gini": 0.359},
+            {"state": "Kelantan", "gini": 0.385},
+            {"state": "Melaka", "gini": 0.370},
+            {"state": "Negeri Sembilan", "gini": 0.369},
+            {"state": "Pahang", "gini": 0.308},
+            {"state": "Perak", "gini": 0.368},
+            {"state": "Perlis", "gini": 0.336},
+            {"state": "Pulau Pinang", "gini": 0.371},
+            {"state": "Sabah", "gini": 0.395},
+            {"state": "Sarawak", "gini": 0.382},
+            {"state": "Selangor", "gini": 0.361},
+            {"state": "Terengganu", "gini": 0.326},
+            {"state": "Kuala Lumpur", "gini": 0.380},
+            {"state": "Labuan", "gini": 0.300},
+            {"state": "Putrajaya", "gini": 0.368}
+          ]
+        },
+        "key": "state",
+        "fields": ["gini"]
+      }
+    },
+    {
+      "calculate": "datum.state == 'Sabah' || datum.state == 'Kelantan' || datum.state == 'Kuala Lumpur' || datum.state == 'Selangor' || datum.state == 'Labuan' || datum.state == 'Pahang'",
+      "as": "highlight"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "color": "#3f3f46",
+        "strokeWidth": 2.2,
+        "opacity": 0.95
+      },
+      "transform": [
+        {
+          "regression": "gini",
+          "on": "income_median_num",
+          "extent": [0, 11000]
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "income_median_num",
+          "type": "quantitative",
+          "title": "Median Household Income (RM), 2022",
+          "scale": {
+            "domain": [0, 11000]
+          },
+          "axis": {
+            "format": ",.0f",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "y": {
+          "field": "gini",
+          "type": "quantitative",
+          "title": "Gini Coefficient",
+          "scale": {
+            "domain": [0.29, 0.40]
+          },
+          "axis": {
+            "format": ".2f",
+            "tickCount": 6,
+            "grid": true
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 135,
+        "opacity": 0.85,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "x": {
+          "field": "income_median_num",
+          "type": "quantitative",
+          "title": "Median Household Income (RM), 2022",
+          "scale": {
+            "domain": [0, 11000]
+          },
+          "axis": {
+            "format": ",.0f",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "y": {
+          "field": "gini",
+          "type": "quantitative",
+          "title": "Gini Coefficient",
+          "scale": {
+            "domain": [0.29, 0.40]
+          },
+          "axis": {
+            "format": ".2f",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Johor",
+              "Kedah",
+              "Kelantan",
+              "Kuala Lumpur",
+              "Labuan",
+              "Melaka",
+              "Negeri Sembilan",
+              "Pahang",
+              "Perak",
+              "Perlis",
+              "Pulau Pinang",
+              "Putrajaya",
+              "Sabah",
+              "Sarawak",
+              "Selangor",
+              "Terengganu"
+            ],
+            "range": [
+              "#332288",
+              "#88CCEE",
+              "#44AA99",
+              "#117733",
+              "#999933",
+              "#DDCC77",
+              "#6F86C9",
+              "#3E5C76",
+              "#AA4499",
+              "#661100",
+              "#6699CC",
+              "#888888",
+              "#1f77b4",
+              "#ff7f0e",
+              "#9467bd",
+              "#17becf"
+            ]
+          }
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.highlight",
+            "value": 0.95
+          },
+          "value": 0.45
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_median_num",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "income_mean_num",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "gini",
+            "type": "quantitative",
+            "title": "Gini",
+            "format": ".3f"
+          }
+        ]
+      }
+    },
+    {
+      "encoding": {
+        "x": {
+          "field": "income_median_num",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "gini",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Johor",
+              "Kedah",
+              "Kelantan",
+              "Kuala Lumpur",
+              "Labuan",
+              "Melaka",
+              "Negeri Sembilan",
+              "Pahang",
+              "Perak",
+              "Perlis",
+              "Pulau Pinang",
+              "Putrajaya",
+              "Sabah",
+              "Sarawak",
+              "Selangor",
+              "Terengganu"
+            ],
+            "range": [
+              "#332288",
+              "#88CCEE",
+              "#44AA99",
+              "#117733",
+              "#999933",
+              "#DDCC77",
+              "#6F86C9",
+              "#3E5C76",
+              "#AA4499",
+              "#661100",
+              "#6699CC",
+              "#888888",
+              "#1f77b4",
+              "#ff7f0e",
+              "#9467bd",
+              "#17becf"
+            ]
+          }
+        }
+      },
+      "layer": [
+        {
+          "transform": [
+            {
+              "filter": "datum.state != 'Melaka' && datum.state != 'Negeri Sembilan' && !datum.highlight"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "bottom",
+            "fontSize": 11.5,
+            "fontWeight": "500",
+            "dy": -8
+          },
+          "encoding": {
+            "opacity": {
+              "value": 0.55
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.state == 'Melaka' || datum.state == 'Negeri Sembilan'"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "top",
+            "fontSize": 11.5,
+            "fontWeight": "500",
+            "dy": 8
+          },
+          "encoding": {
+            "opacity": {
+              "value": 0.45
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.highlight"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "bottom",
+            "fontSize": 13.5,
+            "fontWeight": "bolder",
+            "dy": -10
+          },
+          "encoding": {
+            "opacity": {
+              "value": 1
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "background": "#fffdf8",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#333333",
+      "titleColor": "#333333",
+      "gridColor": "#d9e3ea"
+    },
+    "title": {
+      "font": "Playfair Display",
+      "fontSize": 20,
+      "color": "#1f1f1f",
+      "anchor": "start"
+    }
+  }
+}

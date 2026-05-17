@@ -12,3 +12,28 @@ var vg_3 = "charts/income_map.json";
 vegaEmbed("#chart-income-map", vg_3).then(function(result) {
     // Access the Vega view instance as result.view
 }).catch(console.error);
+
+var vg_4 = "charts/income_ranking.json";
+vegaEmbed("#chart-income-ranking", vg_4).then(function(result) {
+    // Access the Vega view instance as result.view
+}).catch(console.error);
+
+var vg_5 = "charts/poverty_map.json";
+vegaEmbed("#chart-poverty-map", vg_5).then(function(result) {
+    // Access the Vega view instance as result.view
+}).catch(console.error);
+
+var vg_6 = "charts/income_poverty.json";
+vegaEmbed("#chart-income-poverty", vg_6).then(function(result) {
+    // Access the Vega view instance as result.view
+}).catch(console.error);
+
+var vg_7 = "charts/gini_multi_linechart.json";
+vegaEmbed("#chart-gini-multiline", vg_7).then(function(result) {
+    // Access the Vega view instance as result.view
+}).catch(console.error);
+
+var vg_8 = "charts/income_gini.json";
+vegaEmbed("#chart-income-gini", vg_8).then(function(result) {
+    // Access the Vega view instance as result.view
+}).catch(console.error);

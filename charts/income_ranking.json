@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 420,
+  "data": {
+    "url": "../data/hh_income_state.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.date == '2022-01-01'"
+    },
+    {
+      "calculate": "toNumber(datum.income_median)",
+      "as": "income_median_num"
+    },
+    {
+      "calculate": "toNumber(datum.income_mean)",
+      "as": "income_mean_num"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "ordinal",
+      "sort": {
+        "field": "income_median_num",
+        "order": "descending"
+      },
+      "title": null,
+      "axis": {
+        "labelLimit": 220,
+        "labelFontSize": 12
+      }
+    },
+    "x": {
+      "field": "income_median_num",
+      "type": "quantitative",
+      "title": "Median Household Income (RM), 2022",
+      "axis": {
+        "format": ",.0f",
+        "tickCount": 6,
+        "grid": true
+      }
+    },
+    "color": {
+      "field": "income_median_num",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "tealblues",
+        "domain": [3500, 10500]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "income_median_num",
+        "type": "quantitative",
+        "title": "Median Income (RM)",
+        "format": ",.0f"
+      },
+      {
+        "field": "income_mean_num",
+        "type": "quantitative",
+        "title": "Mean Income (RM)",
+        "format": ",.0f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "fontSize": 11,
+        "color": "#234"
+      },
+      "encoding": {
+        "text": {
+          "field": "income_median_num",
+          "type": "quantitative",
+          "format": ",.0f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#fffdf8",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#333333",
+      "titleColor": "#333333",
+      "gridColor": "#d9e3ea"
+    }
+  }
+}
