@@ -1,0 +1,149 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 420,
+  "data": {
+    "url": "../data/hh_expenditure_state.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.date == '2022-01-01'"
+    },
+    {
+      "calculate": "toNumber(datum.expenditure_mean)",
+      "as": "expenditure_mean_num"
+    },
+    {
+      "calculate": "toNumber(datum.income_mean)",
+      "as": "income_mean_num"
+    },
+    {
+      "calculate": "datum.expenditure_mean_num / datum.income_mean_num",
+      "as": "spending_share"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3,
+        "color": "#4f647a"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": [
+            "Putrajaya",
+            "Kuala Lumpur",
+            "Selangor",
+            "Melaka",
+            "Johor",
+            "Pulau Pinang",
+            "Terengganu",
+            "Negeri Sembilan",
+            "Labuan",
+            "Pahang",
+            "Sarawak",
+            "Perak",
+            "Perlis",
+            "Kedah",
+            "Kelantan",
+            "Sabah"
+          ],
+          "title": null,
+          "axis": {
+            "labelLimit": 220,
+            "labelFontSize": 12
+          }
+        },
+        "x": {
+          "field": "expenditure_mean_num",
+          "type": "quantitative",
+          "title": "Mean Household Expenditure (RM), 2022",
+          "axis": {
+            "format": ",.0f",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "expenditure_mean_num",
+            "type": "quantitative",
+            "title": "Mean Expenditure (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "spending_share",
+            "type": "quantitative",
+            "title": "Expenditure Share of Mean Income",
+            "format": ".0%"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "fontSize": 11,
+        "color": "#263746",
+        "tooltip": false
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": [
+            "Putrajaya",
+            "Kuala Lumpur",
+            "Selangor",
+            "Melaka",
+            "Johor",
+            "Pulau Pinang",
+            "Terengganu",
+            "Negeri Sembilan",
+            "Labuan",
+            "Pahang",
+            "Sarawak",
+            "Perak",
+            "Perlis",
+            "Kedah",
+            "Kelantan",
+            "Sabah"
+          ],
+          "title": null
+        },
+        "x": {
+          "field": "expenditure_mean_num",
+          "type": "quantitative",
+          "title": "Mean Household Expenditure (RM), 2022"
+        },
+        "text": {
+          "field": "expenditure_mean_num",
+          "type": "quantitative",
+          "format": ",.0f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#fffdf8",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#333333",
+      "titleColor": "#333333",
+      "gridColor": "#d9e3ea"
+    }
+  }
+}

@@ -5,7 +5,7 @@
   "projection": {
     "type": "mercator",
     "center": [109.5, 4.0],
-    "scale": 1850
+    "scale": 1910
   },
   "layer": [
     {

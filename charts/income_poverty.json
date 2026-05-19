@@ -1,9 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 420,
   "background": "#fffdf8",
-  "title": "Income and Poverty by State (2022)",
   "data": {
-    "url": "../data/hh_income_state.csv"
+    "url": "../data/hh_income_poverty_state.csv"
   },
   "transform": [
     {
@@ -14,135 +15,310 @@
       "as": "income_median_num"
     },
     {
-      "lookup": "state",
-      "from": {
-        "data": {
-          "values": [
-            {"state": "Johor", "poverty_absolute": 4.6},
-            {"state": "Kedah", "poverty_absolute": 9.0},
-            {"state": "Kelantan", "poverty_absolute": 13.2},
-            {"state": "Melaka", "poverty_absolute": 4.2},
-            {"state": "Negeri Sembilan", "poverty_absolute": 4.4},
-            {"state": "Pahang", "poverty_absolute": 6.3},
-            {"state": "Perak", "poverty_absolute": 7.5},
-            {"state": "Perlis", "poverty_absolute": 4.0},
-            {"state": "Pulau Pinang", "poverty_absolute": 2.0},
-            {"state": "Sabah", "poverty_absolute": 19.7},
-            {"state": "Sarawak", "poverty_absolute": 10.8},
-            {"state": "Selangor", "poverty_absolute": 1.5},
-            {"state": "Terengganu", "poverty_absolute": 6.2},
-            {"state": "Kuala Lumpur", "poverty_absolute": 1.4},
-            {"state": "Labuan", "poverty_absolute": 2.5},
-            {"state": "Putrajaya", "poverty_absolute": 0.1}
-          ]
-        },
-        "key": "state",
-        "fields": ["poverty_absolute"]
+      "calculate": "toNumber(datum.income_mean)",
+      "as": "income_mean_num"
+    },
+    {
+      "calculate": "toNumber(datum.poverty_absolute)",
+      "as": "poverty_absolute_num"
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "income_ref": 6338
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "stroke": "#c8b8a2",
+        "strokeDash": [5, 4],
+        "strokeWidth": 1.3,
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "income_ref",
+          "type": "quantitative",
+          "title": "Median Household Income (RM), 2022"
+        }
       }
     },
     {
-      "calculate": "datum.state == 'Sabah' || datum.state == 'Kelantan' || datum.state == 'Kuala Lumpur' || datum.state == 'Putrajaya'",
-      "as": "highlight"
-    }
-  ],
-  "hconcat": [
-    {
-      "width": 320,
-      "height": 420,
+      "data": {
+        "values": [
+          {
+            "x": 6338,
+            "y": 20.7,
+            "label": "National median income"
+          }
+        ]
+      },
       "mark": {
-        "type": "point",
-        "filled": true,
-        "size": 110
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 8,
+        "fontSize": 10.5,
+        "fontWeight": "600",
+        "color": "#8b7d69",
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "poverty_ref": 6.2
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "stroke": "#c8b8a2",
+        "strokeDash": [5, 4],
+        "strokeWidth": 1.3,
+        "opacity": 0.8
       },
       "encoding": {
         "y": {
-          "field": "state",
-          "type": "ordinal",
-          "sort": {
-            "field": "income_median_num",
-            "order": "descending"
-          },
-          "title": null,
-          "axis": {
-            "labelLimit": 220,
-            "labelFontSize": 12
+          "field": "poverty_ref",
+          "type": "quantitative",
+          "title": "Absolute Poverty Rate (%), 2022"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 10250,
+            "y": 6.2,
+            "label": "National poverty rate"
           }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dy": -6,
+        "fontSize": 10.5,
+        "fontWeight": "600",
+        "color": "#8b7d69",
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
         },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 3600,
+            "y": 18.0,
+            "label": "Lower income,\nhigher poverty\n6 states"
+          },
+          {
+            "x": 7950,
+            "y": 18.0,
+            "label": "Higher income,\nhigher poverty\nNo states"
+          },
+          {
+            "x": 3600,
+            "y": 1.6,
+            "label": "Lower income,\nlower poverty\n4 states"
+          },
+          {
+            "x": 7950,
+            "y": 1.6,
+            "label": "Higher income,\nlower poverty\n6 states"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "fontSize": 9.5,
+        "fontWeight": "600",
+        "lineBreak": "\n",
+        "color": "#8b7d69",
+        "opacity": 0.78,
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "filled": true,
+        "stroke": "#fffdf8",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
         "x": {
           "field": "income_median_num",
           "type": "quantitative",
-          "title": "Median Household Income (RM)",
+          "title": "Median Household Income (RM), 2022",
           "scale": {
-            "domain": [0, 11000]
+            "domain": [3200, 11500]
           },
           "axis": {
             "format": ",.0f",
-            "tickCount": 5,
+            "tickCount": 6,
             "grid": true
           }
         },
-        "color": {
-          "condition": {
-            "test": "datum.highlight",
-            "value": "#1f5a91"
+        "y": {
+          "field": "poverty_absolute_num",
+          "type": "quantitative",
+          "title": "Absolute Poverty Rate (%), 2022",
+          "scale": {
+            "domain": [-0.5, 21]
           },
-          "value": "#7fb8c9"
+          "axis": {
+            "format": ".0f",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "size": {
+          "value": 95
+        },
+        "opacity": {
+          "value": 0.78
+        },
+        "color": {
+          "value": "#8c2f39"
         },
         "tooltip": [
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "income_median_num", "type": "quantitative", "title": "Median Income (RM)", "format": ",.0f"},
-          {"field": "poverty_absolute", "type": "quantitative", "title": "Absolute Poverty (%)", "format": ".1f"}
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_median_num",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "income_mean_num",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "poverty_absolute_num",
+            "type": "quantitative",
+            "title": "Absolute Poverty (%)",
+            "format": ".1f"
+          }
         ]
       }
     },
     {
-      "width": 320,
-      "height": 420,
+      "transform": [
+        {
+          "filter": "datum.state != 'Putrajaya'"
+        }
+      ],
       "mark": {
-        "type": "point",
-        "filled": true,
-        "size": 110
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "color": "#3a3a3a",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -18
       },
       "encoding": {
-        "y": {
-          "field": "state",
-          "type": "ordinal",
-          "sort": {
-            "field": "income_median_num",
-            "order": "descending"
-          },
-          "title": null,
-          "axis": {
-            "labels": false,
-            "ticks": false,
-            "domain": false
-          }
-        },
         "x": {
-          "field": "poverty_absolute",
-          "type": "quantitative",
-          "title": "Absolute Poverty Rate (%)",
-          "scale": {
-            "domain": [0, 20]
-          },
-          "axis": {
-            "format": ".0f",
-            "tickCount": 5,
-            "grid": true
-          }
+          "field": "income_median_num",
+          "type": "quantitative"
         },
-        "color": {
-          "condition": {
-            "test": "datum.highlight",
-            "value": "#c7543f"
-          },
-          "value": "#e3a08f"
+        "y": {
+          "field": "poverty_absolute_num",
+          "type": "quantitative"
         },
-        "tooltip": [
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "income_median_num", "type": "quantitative", "title": "Median Income (RM)", "format": ",.0f"},
-          {"field": "poverty_absolute", "type": "quantitative", "title": "Absolute Poverty (%)", "format": ".1f"}
-        ]
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.state == 'Putrajaya'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "color": "#3a3a3a",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -24
+      },
+      "encoding": {
+        "x": {
+          "field": "income_median_num",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "poverty_absolute_num",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        }
       }
     }
   ],
@@ -154,12 +330,6 @@
       "labelColor": "#333333",
       "titleColor": "#333333",
       "gridColor": "#d9e3ea"
-    },
-    "title": {
-      "font": "Playfair Display",
-      "fontSize": 20,
-      "color": "#1f1f1f",
-      "anchor": "start"
     }
   }
 }

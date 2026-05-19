@@ -1,0 +1,287 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 420,
+  "params": [
+    {
+      "name": "Year",
+      "value": 2024,
+      "bind": {
+        "input": "select",
+        "options": [2019, 2022, 2024],
+        "name": "Year: "
+      }
+    }
+  ],
+  "data": {
+    "url": "../data/hies_malaysia_percentile.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.variable == 'mean'"
+    },
+    {
+      "calculate": "year(toDate(datum.date))",
+      "as": "year_num"
+    },
+    {
+      "filter": "datum.year_num == Year"
+    },
+    {
+      "calculate": "toNumber(datum.percentile)",
+      "as": "percentile_num"
+    },
+    {
+      "calculate": "toNumber(datum.income)",
+      "as": "income_num"
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"percentile_ref": 50},
+          {"percentile_ref": 90}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "stroke": "#c6bcae",
+        "strokeDash": [4, 4],
+        "strokeWidth": 1.4,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "x": {
+          "field": "percentile_ref",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"percentile_ref": 99}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "stroke": "#8f7b63",
+        "strokeDash": [4, 4],
+        "strokeWidth": 1.8,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "percentile_ref",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"x": 50, "label": "50th"},
+          {"x": 90, "label": "90th"},
+          {"x": 99, "label": "99th"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "top",
+        "dy": 6,
+        "dx": -4,
+        "fontSize": 10,
+        "fontWeight": "600",
+        "color": "#6f6558",
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "value": 0
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "#8c2f39",
+        "strokeWidth": 3.5
+      },
+      "encoding": {
+        "x": {
+          "field": "percentile_num",
+          "type": "quantitative",
+          "title": "Household Income Percentile",
+          "scale": {
+            "domain": [1, 100]
+          },
+          "axis": {
+            "values": [1, 10, 25, 50, 75, 90, 100]
+          }
+        },
+        "y": {
+          "field": "income_num",
+          "type": "quantitative",
+          "title": "Mean Household Income (RM)",
+          "axis": {
+            "format": ",.0f",
+            "grid": true,
+            "tickCount": 6
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year_num",
+            "type": "quantitative",
+            "title": "Year",
+            "format": ".0f"
+          },
+          {
+            "field": "percentile_num",
+            "type": "quantitative",
+            "title": "Percentile",
+            "format": ".0f"
+          },
+          {
+            "field": "income_num",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "note": "Across all shown years, mean income at the\n99th percentile is about twice the 90th."
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 11,
+        "fontWeight": "700",
+        "lineBreak": "\n",
+        "color": "#3f3f3f",
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "value": 82
+        },
+        "y": {
+          "value": 28
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 40,
+            "y": 12000,
+            "note": "The 50th percentile marks\nthe middle of households."
+          },
+          {
+            "x": 80,
+            "y": 25000,
+            "note": "The curve bends upward\nfrom around the 90th."
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "lineBreak": "\n",
+        "color": "#3b3b3b",
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 99,
+            "y": 50000,
+            "note": "The sharpest jump appears\nat the very top end."
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "top",
+        "dx": -8,
+        "fontSize": 11,
+        "fontWeight": "700",
+        "lineBreak": "\n",
+        "color": "#2f2f2f",
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#fffdf8",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#333333",
+      "titleColor": "#333333",
+      "gridColor": "#d9e3ea"
+    },
+    "legend": {
+      "labelFont": "Helvetica Neue",
+      "titleFont": "Helvetica Neue"
+    }
+  }
+}

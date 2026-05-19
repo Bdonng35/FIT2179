@@ -1,0 +1,279 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 420,
+  "data": {
+    "url": "../data/hh_expenditure_state.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.date == '2022-01-01'"
+    },
+    {
+      "calculate": "toNumber(datum.income_mean)",
+      "as": "income_mean_num"
+    },
+    {
+      "calculate": "toNumber(datum.expenditure_mean)",
+      "as": "expenditure_mean_num"
+    },
+    {
+      "calculate": "datum.expenditure_mean_num / datum.income_mean_num",
+      "as": "spending_share"
+    },
+    {
+      "calculate": "datum.income_mean_num - datum.expenditure_mean_num",
+      "as": "income_expenditure_gap"
+    },
+    {
+      "calculate": "indexof(['Kuala Lumpur', 'Selangor', 'Kelantan', 'Pahang'], datum.state) >= 0 ? 1 : 0",
+      "as": "highlight_state"
+    },
+    {
+      "fold": ["income_mean_num", "expenditure_mean_num"],
+      "as": ["measure_key", "amount_value"]
+    },
+    {
+      "calculate": "datum.measure_key == 'income_mean_num' ? 'Mean Income' : 'Mean Expenditure'",
+      "as": "measure_label"
+    }
+  ],
+  "layer": [
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "max",
+              "field": "income_mean_num",
+              "as": "income_mean_num"
+            },
+            {
+              "op": "max",
+              "field": "expenditure_mean_num",
+              "as": "expenditure_mean_num"
+            },
+            {
+              "op": "max",
+              "field": "spending_share",
+              "as": "spending_share"
+            },
+            {
+              "op": "max",
+              "field": "income_expenditure_gap",
+              "as": "income_expenditure_gap"
+            },
+            {
+              "op": "max",
+              "field": "highlight_state",
+              "as": "highlight_state"
+            }
+          ],
+          "groupby": ["state"]
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "stroke": "#b8c2cb",
+        "strokeWidth": 1.8
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": {
+            "field": "expenditure_mean_num",
+            "order": "descending"
+          },
+          "title": null,
+          "axis": {
+            "labelLimit": 220,
+            "labelFontSize": 12
+          }
+        },
+        "x": {
+          "field": "expenditure_mean_num",
+          "type": "quantitative",
+          "title": "Monthly Household Amount (RM), 2022",
+          "scale": {
+            "domain": [0, 14000]
+          },
+          "axis": {
+            "format": ",.0f",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "x2": {
+          "field": "income_mean_num"
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.highlight_state == 1",
+            "value": 1
+          },
+          "value": 0.45
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "stroke": "#fffdf8",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": {
+            "field": "expenditure_mean_num",
+            "order": "descending"
+          },
+          "title": null,
+          "axis": {
+            "labelLimit": 220,
+            "labelFontSize": 12
+          }
+        },
+        "x": {
+          "field": "amount_value",
+          "type": "quantitative",
+          "title": "Monthly Household Amount (RM), 2022",
+          "scale": {
+            "domain": [0, 14000]
+          },
+          "axis": {
+            "format": ",.0f",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "measure_label",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": ["Mean Income", "Mean Expenditure"],
+            "range": ["#8c2f39", "#4f647a"]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal"
+          }
+        },
+        "size": {
+          "condition": {
+            "test": "datum.highlight_state == 1",
+            "value": 125
+          },
+          "value": 85
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.highlight_state == 1",
+            "value": 1
+          },
+          "value": 0.55
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_expenditure_gap",
+            "type": "quantitative",
+            "title": "Income-Expenditure Gap (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "spending_share",
+            "type": "quantitative",
+            "title": "Expenditure Share of Mean Income",
+            "format": ".0%"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "note": "High spending does not always mean the\ngreatest pressure: Kuala Lumpur and\nSelangor record some of the highest\nhousehold expenditure, but they also\nretain the largest gaps between mean\nincome and expenditure."
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "lineBreak": "\n",
+        "color": "#3b3b3b",
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "value": 40
+        },
+        "y": {
+          "value": 28
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "note": "Budget pressure appears tighter in\nstates such as Kelantan and Pahang,\nwhere household expenditure takes up\nmore than 70% of mean income,\nleaving much less room after\nbasic spending."
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "lineBreak": "\n",
+        "color": "#3b3b3b",
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "value": 430
+        },
+        "y": {
+          "value": 272
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#fffdf8",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#333333",
+      "titleColor": "#333333",
+      "gridColor": "#d9e3ea"
+    },
+    "legend": {
+      "labelFont": "Helvetica Neue",
+      "titleFont": "Helvetica Neue"
+    }
+  }
+}

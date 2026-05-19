@@ -37,3 +37,23 @@ var vg_8 = "charts/income_gini.json";
 vegaEmbed("#chart-income-gini", vg_8).then(function(result) {
     // Access the Vega view instance as result.view
 }).catch(console.error);
+
+var vg_9 = "charts/income_expenditure.json";
+vegaEmbed("#chart-income-expenditure", vg_9).then(function(result) {
+    // Access the Vega view instance as result.view
+}).catch(console.error);
+
+var vg_10 = "charts/expenditure_ranking.json";
+vegaEmbed("#chart-expenditure-ranking", vg_10).then(function(result) {
+    // Access the Vega view instance as result.view
+}).catch(console.error);
+
+var vg_11 = "charts/amenities_comparison.json";
+vegaEmbed("#chart-amenities-comparison", vg_11).then(function(result) {
+    // Access the Vega view instance as result.view
+}).catch(console.error);
+
+var vg_12 = "charts/percentile_distribution.json";
+vegaEmbed("#chart-percentile-distribution", vg_12).then(function(result) {
+    // Access the Vega view instance as result.view
+}).catch(console.error);

@@ -1,0 +1,169 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 320,
+  "params": [
+    {
+      "name": "Year",
+      "value": 2022,
+      "bind": {
+        "input": "range",
+        "min": 2016,
+        "max": 2022,
+        "step": 3,
+        "name": "Year: "
+      }
+    },
+    {
+      "name": "Amenity",
+      "value": "Piped Water",
+      "bind": {
+        "input": "select",
+        "options": ["Piped Water", "Sanitation", "Electricity"],
+        "name": "Amenity: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "mercator",
+    "center": [109.5, 4.0],
+    "scale": 1910
+  },
+  "layer": [
+    {
+      "data": {
+        "sphere": true
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#dcebf7"
+      }
+    },
+    {
+      "data": {
+        "url": "../data/malaysia_map.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_graticules_1"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.45,
+        "opacity": 0.45
+      }
+    },
+    {
+      "data": {
+        "url": "../data/malaysia_map.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_0_countries"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.properties.ADM0_A3 != 'MYS'"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d7d9dd",
+        "stroke": "#90979f",
+        "strokeWidth": 0.7
+      }
+    },
+    {
+      "data": {
+        "url": "../data/malaysia_map.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "malaysia.state"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.properties.name",
+          "as": "state"
+        },
+        {
+          "calculate": "datum.state + '-' + Year",
+          "as": "state_year"
+        },
+        {
+          "lookup": "state_year",
+          "from": {
+            "data": {
+              "url": "../data/hh_access_amenities_state.csv"
+            },
+            "key": "state_year",
+            "fields": ["year_num", "piped_water", "sanitation", "electricity"]
+          }
+        },
+        {
+          "calculate": "Amenity == 'Piped Water' ? toNumber(datum.piped_water) : Amenity == 'Sanitation' ? toNumber(datum.sanitation) : toNumber(datum.electricity)",
+          "as": "amenity_value"
+        },
+        {
+          "calculate": "Amenity == 'Piped Water' ? (datum.amenity_value < 80 ? 'Below 80%' : datum.amenity_value < 90 ? '80% to 89.9%' : datum.amenity_value < 98 ? '90% to 97.9%' : datum.amenity_value < 100 ? '98% to 99.9%' : '100%') : Amenity == 'Sanitation' ? (datum.amenity_value < 98 ? 'Below 98%' : datum.amenity_value < 99.5 ? '98% to 99.4%' : datum.amenity_value < 99.9 ? '99.5% to 99.8%' : datum.amenity_value < 100 ? '99.9%' : '100%') : (datum.amenity_value < 90 ? 'Below 90%' : datum.amenity_value < 99 ? '90% to 98.9%' : datum.amenity_value < 99.9 ? '99% to 99.8%' : datum.amenity_value < 100 ? '99.9%' : '100%')",
+          "as": "amenity_band"
+        },
+        {
+          "calculate": "Amenity == 'Piped Water' ? (datum.amenity_value < 80 ? 1 : datum.amenity_value < 90 ? 2 : datum.amenity_value < 98 ? 3 : datum.amenity_value < 100 ? 4 : 5) : Amenity == 'Sanitation' ? (datum.amenity_value < 98 ? 1 : datum.amenity_value < 99.5 ? 2 : datum.amenity_value < 99.9 ? 3 : datum.amenity_value < 100 ? 4 : 5) : (datum.amenity_value < 90 ? 1 : datum.amenity_value < 99 ? 2 : datum.amenity_value < 99.9 ? 3 : datum.amenity_value < 100 ? 4 : 5)",
+          "as": "amenity_band_order"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fffdf8",
+        "strokeWidth": 1.1
+      },
+      "encoding": {
+        "color": {
+          "field": "amenity_band_order",
+          "type": "ordinal",
+          "title": "Access Band",
+          "scale": {
+            "domain": [1, 2, 3, 4, 5],
+            "range": ["#f2efe4", "#d7d9af", "#9fc79a", "#5f9a8b", "#2f5f6d"]
+          },
+          "legend": {
+            "symbolType": "square",
+            "values": [1, 2, 3, 4, 5],
+            "labelExpr": "Amenity == 'Piped Water' ? (datum.label == '1' ? 'Below 80%' : datum.label == '2' ? '80% to 89.9%' : datum.label == '3' ? '90% to 97.9%' : datum.label == '4' ? '98% to 99.9%' : '100%') : Amenity == 'Sanitation' ? (datum.label == '1' ? 'Below 98%' : datum.label == '2' ? '98% to 99.4%' : datum.label == '3' ? '99.5% to 99.8%' : datum.label == '4' ? '99.9%' : '100%') : (datum.label == '1' ? 'Below 90%' : datum.label == '2' ? '90% to 98.9%' : datum.label == '3' ? '99% to 99.8%' : datum.label == '4' ? '99.9%' : '100%')"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "year_num",
+            "type": "quantitative",
+            "title": "Year",
+            "format": ".0f"
+          },
+          {
+            "expr": "Amenity",
+            "title": "Amenity"
+          },
+          {
+            "field": "amenity_value",
+            "type": "quantitative",
+            "title": "Access (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "#fffdf8",
+    "view": {
+      "stroke": null
+    }
+  }
+}
