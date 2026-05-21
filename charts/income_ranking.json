@@ -16,16 +16,38 @@
     {
       "calculate": "toNumber(datum.income_mean)",
       "as": "income_mean_num"
+    },
+    {
+      "calculate": "datum.income_median_num < 4500 ? 'Below RM4,500' : datum.income_median_num < 5500 ? 'RM4,500 to RM5,499' : datum.income_median_num < 7000 ? 'RM5,500 to RM6,999' : datum.income_median_num < 9000 ? 'RM7,000 to RM8,999' : 'RM9,000 and above'",
+      "as": "income_band"
+    },
+    {
+      "calculate": "datum.income_median_num < 4500 ? 1 : datum.income_median_num < 5500 ? 2 : datum.income_median_num < 7000 ? 3 : datum.income_median_num < 9000 ? 4 : 5",
+      "as": "income_band_order"
     }
   ],
   "encoding": {
     "y": {
       "field": "state",
       "type": "ordinal",
-      "sort": {
-        "field": "income_median_num",
-        "order": "descending"
-      },
+      "sort": [
+        "Kuala Lumpur",
+        "Putrajaya",
+        "Selangor",
+        "Labuan",
+        "Johor",
+        "Pulau Pinang",
+        "Melaka",
+        "Terengganu",
+        "Negeri Sembilan",
+        "Sarawak",
+        "Pahang",
+        "Perlis",
+        "Sabah",
+        "Perak",
+        "Kedah",
+        "Kelantan"
+      ],
       "title": null,
       "axis": {
         "labelLimit": 220,
@@ -43,11 +65,11 @@
       }
     },
     "color": {
-      "field": "income_median_num",
-      "type": "quantitative",
+      "field": "income_band_order",
+      "type": "ordinal",
       "scale": {
-        "scheme": "tealblues",
-        "domain": [3500, 10500]
+        "domain": [1, 2, 3, 4, 5],
+        "range": ["#f7edd8", "#e8c98b", "#d9a441", "#a9782f", "#6f4e1f"]
       },
       "legend": null
     },
@@ -85,7 +107,7 @@
         "baseline": "middle",
         "dx": 6,
         "fontSize": 11,
-        "color": "#234"
+        "color": "#5c4520"
       },
       "encoding": {
         "text": {

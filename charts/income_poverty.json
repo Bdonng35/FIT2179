@@ -21,6 +21,10 @@
     {
       "calculate": "toNumber(datum.poverty_absolute)",
       "as": "poverty_absolute_num"
+    },
+    {
+      "calculate": "datum.income_median_num < 6338 && datum.poverty_absolute_num > 6.2 ? 'Lower income, higher poverty' : datum.income_median_num >= 6338 && datum.poverty_absolute_num > 6.2 ? 'Higher income, higher poverty' : datum.income_median_num < 6338 && datum.poverty_absolute_num <= 6.2 ? 'Lower income, lower poverty' : 'Higher income, lower poverty'",
+      "as": "quadrant_group"
     }
   ],
   "layer": [
@@ -232,7 +236,29 @@
           "value": 0.78
         },
         "color": {
-          "value": "#8c2f39"
+          "field": "quadrant_group",
+          "type": "nominal",
+          "title": "State Group",
+          "scale": {
+            "domain": [
+              "Lower income, higher poverty",
+              "Higher income, higher poverty",
+              "Lower income, lower poverty",
+              "Higher income, lower poverty"
+            ],
+            "range": [
+              "#c57a63",
+              "#9c8b76",
+              "#7f94b0",
+              "#5f8577"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "columns": 2,
+            "symbolType": "circle"
+          }
         },
         "tooltip": [
           {
@@ -264,7 +290,7 @@
     {
       "transform": [
         {
-          "filter": "datum.state != 'Putrajaya'"
+          "filter": "datum.state != 'Putrajaya' && datum.state != 'Kuala Lumpur' && datum.state != 'Pulau Pinang' && datum.state != 'Perlis' && datum.state != 'Melaka' && datum.state != 'Pahang'"
         }
       ],
       "mark": {
@@ -274,7 +300,97 @@
         "color": "#3a3a3a",
         "align": "center",
         "baseline": "bottom",
-        "dy": -18
+        "dy": -10
+      },
+      "encoding": {
+        "x": {
+          "field": "income_median_num",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "poverty_absolute_num",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.state == 'Pulau Pinang' || datum.state == 'Perlis' || datum.state == 'Melaka'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "color": "#3a3a3a",
+        "align": "center",
+        "baseline": "top",
+        "dy": 8
+      },
+      "encoding": {
+        "x": {
+          "field": "income_median_num",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "poverty_absolute_num",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.state == 'Kuala Lumpur'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "color": "#3a3a3a",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 10
+      },
+      "encoding": {
+        "x": {
+          "field": "income_median_num",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "poverty_absolute_num",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.state == 'Pahang'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "color": "#3a3a3a",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -10
       },
       "encoding": {
         "x": {
@@ -303,8 +419,8 @@
         "fontWeight": "600",
         "color": "#3a3a3a",
         "align": "center",
-        "baseline": "bottom",
-        "dy": -24
+        "baseline": "top",
+        "dy": 8
       },
       "encoding": {
         "x": {

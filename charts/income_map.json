@@ -77,6 +77,18 @@
         },
         {
           "filter": "datum.date == '2022-01-01'"
+        },
+        {
+          "calculate": "toNumber(datum.income_median)",
+          "as": "income_median_num"
+        },
+        {
+          "calculate": "datum.income_median_num < 4500 ? 'Below RM4,500' : datum.income_median_num < 5500 ? 'RM4,500 to RM5,499' : datum.income_median_num < 7000 ? 'RM5,500 to RM6,999' : datum.income_median_num < 9000 ? 'RM7,000 to RM8,999' : 'RM9,000 and above'",
+          "as": "income_band"
+        },
+        {
+          "calculate": "datum.income_median_num < 4500 ? 1 : datum.income_median_num < 5500 ? 2 : datum.income_median_num < 7000 ? 3 : datum.income_median_num < 9000 ? 4 : 5",
+          "as": "income_band_order"
         }
       ],
       "mark": {
@@ -86,15 +98,17 @@
       },
       "encoding": {
         "color": {
-          "field": "income_median",
-          "type": "quantitative",
-          "title": "Median Household Income (RM), 2022",
+          "field": "income_band_order",
+          "type": "ordinal",
+          "title": "Median Household Income Band",
           "scale": {
-            "scheme": "tealblues",
-            "domain": [3500, 10500]
+            "domain": [1, 2, 3, 4, 5],
+            "range": ["#f7edd8", "#e8c98b", "#d9a441", "#a9782f", "#6f4e1f"]
           },
           "legend": {
-            "gradientLength": 220
+            "symbolType": "square",
+            "values": [1, 2, 3, 4, 5],
+            "labelExpr": "datum.label == '1' ? 'Below RM4,500' : datum.label == '2' ? 'RM4,500 to RM5,499' : datum.label == '3' ? 'RM5,500 to RM6,999' : datum.label == '4' ? 'RM7,000 to RM8,999' : 'RM9,000 and above'"
           }
         },
 
@@ -105,7 +119,7 @@
             "title": "State"
           },
           {
-            "field": "income_median",
+            "field": "income_median_num",
             "type": "quantitative",
             "title": "Median Income (RM)",
             "format": ",.0f"
