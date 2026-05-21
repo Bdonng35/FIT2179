@@ -74,6 +74,58 @@
       "as": "focus_status"
     }
   ],
+  "encoding": {
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "title": "State",
+      "scale": {
+        "domain": [
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Labuan",
+          "Melaka",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Pulau Pinang",
+          "Putrajaya",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "range": [
+          "#332288",
+          "#88CCEE",
+          "#44AA99",
+          "#117733",
+          "#999933",
+          "#DDCC77",
+          "#6F86C9",
+          "#3E5C76",
+          "#AA4499",
+          "#661100",
+          "#6699CC",
+          "#888888",
+          "#1f77b4",
+          "#ff7f0e",
+          "#9467bd",
+          "#17becf"
+        ]
+      },
+      "legend": {
+        "orient": "right",
+        "direction": "vertical",
+        "columns": 1,
+        "symbolType": "circle",
+        "symbolSize": 90
+      }
+    }
+  },
   "layer": [
     {
       "mark": {
@@ -106,56 +158,6 @@
             "format": ".2f",
             "tickCount": 6,
             "grid": true
-          }
-        },
-        "color": {
-          "field": "state",
-          "type": "nominal",
-          "title": "State",
-          "scale": {
-            "domain": [
-              "Johor",
-              "Kedah",
-              "Kelantan",
-              "Kuala Lumpur",
-              "Labuan",
-              "Melaka",
-              "Negeri Sembilan",
-              "Pahang",
-              "Perak",
-              "Perlis",
-              "Pulau Pinang",
-              "Putrajaya",
-              "Sabah",
-              "Sarawak",
-              "Selangor",
-              "Terengganu"
-            ],
-            "range": [
-              "#332288",
-              "#88CCEE",
-              "#44AA99",
-              "#117733",
-              "#999933",
-              "#DDCC77",
-              "#6F86C9",
-              "#3E5C76",
-              "#AA4499",
-              "#661100",
-              "#6699CC",
-              "#888888",
-              "#1f77b4",
-              "#ff7f0e",
-              "#9467bd",
-              "#17becf"
-            ]
-          },
-          "legend": {
-            "orient": "right",
-            "direction": "vertical",
-            "columns": 1,
-            "symbolType": "circle",
-            "symbolSize": 90
           }
         },
         "detail": {
@@ -208,49 +210,6 @@
         "y": {
           "field": "gini_num",
           "type": "quantitative"
-        },
-        "color": {
-          "field": "state",
-          "type": "nominal",
-          "legend": null,
-          "scale": {
-            "domain": [
-              "Johor",
-              "Kedah",
-              "Kelantan",
-              "Kuala Lumpur",
-              "Labuan",
-              "Melaka",
-              "Negeri Sembilan",
-              "Pahang",
-              "Perak",
-              "Perlis",
-              "Pulau Pinang",
-              "Putrajaya",
-              "Sabah",
-              "Sarawak",
-              "Selangor",
-              "Terengganu"
-            ],
-            "range": [
-              "#332288",
-              "#88CCEE",
-              "#44AA99",
-              "#117733",
-              "#999933",
-              "#DDCC77",
-              "#6F86C9",
-              "#3E5C76",
-              "#AA4499",
-              "#661100",
-              "#6699CC",
-              "#888888",
-              "#1f77b4",
-              "#ff7f0e",
-              "#9467bd",
-              "#17becf"
-            ]
-          }
         },
         "detail": {
           "field": "state"
@@ -336,47 +295,7 @@
           "type": "nominal"
         },
         "color": {
-          "field": "state",
-          "type": "nominal",
-          "legend": null,
-          "scale": {
-            "domain": [
-              "Johor",
-              "Kedah",
-              "Kelantan",
-              "Kuala Lumpur",
-              "Labuan",
-              "Melaka",
-              "Negeri Sembilan",
-              "Pahang",
-              "Perak",
-              "Perlis",
-              "Pulau Pinang",
-              "Putrajaya",
-              "Sabah",
-              "Sarawak",
-              "Selangor",
-              "Terengganu"
-            ],
-            "range": [
-              "#332288",
-              "#88CCEE",
-              "#44AA99",
-              "#117733",
-              "#999933",
-              "#DDCC77",
-              "#6F86C9",
-              "#3E5C76",
-              "#AA4499",
-              "#661100",
-              "#6699CC",
-              "#888888",
-              "#1f77b4",
-              "#ff7f0e",
-              "#9467bd",
-              "#17becf"
-            ]
-          }
+          "legend": null
         }
       }
     }

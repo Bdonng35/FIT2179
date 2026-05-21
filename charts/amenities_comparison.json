@@ -106,6 +106,10 @@
           "as": "amenity_value"
         },
         {
+          "calculate": "Amenity",
+          "as": "amenity_label"
+        },
+        {
           "calculate": "Amenity == 'Piped Water' ? (datum.amenity_value < 80 ? 'Below 80%' : datum.amenity_value < 90 ? '80% to 89.9%' : datum.amenity_value < 98 ? '90% to 97.9%' : datum.amenity_value < 100 ? '98% to 99.9%' : '100%') : Amenity == 'Sanitation' ? (datum.amenity_value < 98 ? 'Below 98%' : datum.amenity_value < 99.5 ? '98% to 99.4%' : datum.amenity_value < 99.9 ? '99.5% to 99.8%' : datum.amenity_value < 100 ? '99.9%' : '100%') : (datum.amenity_value < 90 ? 'Below 90%' : datum.amenity_value < 99 ? '90% to 98.9%' : datum.amenity_value < 99.9 ? '99% to 99.8%' : datum.amenity_value < 100 ? '99.9%' : '100%')",
           "as": "amenity_band"
         },
@@ -147,7 +151,8 @@
             "format": ".0f"
           },
           {
-            "expr": "Amenity",
+            "field": "amenity_label",
+            "type": "nominal",
             "title": "Amenity"
           },
           {
