@@ -19,216 +19,249 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body> 
+<body>
     <div class="page">
 
-    <header class="hero">
-        <h1 class="page-title">
-            THE UNEVEN MALAYSIA HOUSEHOLD REALITY</h1>
+        <header class="hero">
+            <h1 class="page-title">THE UNEVEN MALAYSIA HOUSEHOLD REALITY</h1>
 
-        <p class="subtitle">
-            A visual story of income, poverty, inequality, expenditure,
-            and basic living conditions across Malaysia.
-        </p>
+            <div class="hero-content">
+                <div class="hero-left">
+                    <p class="subtitle">
+                        A visual story of income, poverty, inequality, basic living conditions, and expenditure across
+                        Malaysia.
+                    </p>
+                    <p class="intro">
+                        Malaysia has grown richer over time, but growth has not
+                        translated into equal household wellbeing everywhere.
+                    </p>
+                    <p class="intro">
+                        Income, inequality, expenditure and access to basic amenities
+                        reveal a country where development remains uneven across states.
+                    </p>
+                </div>
 
-        <p class="intro">
-            Malaysia has grown richer over time, but growth has not translated
-            into equal household wellbeing everywhere. Income, inequality, expenditure 
-            and access to basic amenities reveal a country where development remains
-            uneven across states.
-        </p>
-    </header>
+                <div class="hero-right">
+                    <div class="important-info-box">
+                        <h3>About This Project</h3>
+                        <p>
+                            This interactive visualization examines regional disparities <br>
+                            across Malaysia, highlighting how aggregate national metrics <br>
+                            often hide underlying gaps in state-level development, <br>
+                            household wealth, and standard of living.
+                        </p>
+                        <div class="project-metadata">
+                            <div class="project-tag">FIT2179 Data Visualization</div>
+                            <div class="project-author">Authorship: Brandon Ng </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-    <section class="story-section">
+        <section class="story-section section-two-up">
 
-        <h2>Section 1: Growth</h2>
-        <p class="section-text">
-            At the national level, Malaysia's household economy has improved substantially over time. 
-            Rising income and a growing number of households suggest broad economic progress, 
-            but national averages only tell part of the story.
-        </p>
+            <h2>Section 1: Growth</h2>
+            <div class="section-intro-row">
+                <p class="section-text section-1-text">
+                    At the national level, Malaysia's household economy
+                    has improved substantially over time, showing
+                    steady wealth generation.
+                </p>
 
-        <div class="chart-block">
-            <h3>National Household Income Over Time</h3>
-            <p class="chart-caption">
-                Mean and median household income have both risen over time,
-                showing that Malaysia has become wealthier overall.
-            </p>
-            <div id="chart-income-time" class="vis-container"></div>
-        </div>
+                <div class="shared-control-bar" aria-label="Section 1 year control">
+                    <label for="section1-year-slider">Filter years</label>
+                    <input id="section1-year-slider" type="range" min="1974" max="2022" step="1" value="2022">
+                    <span id="section1-year-value">2022</span>
+                </div>
+            </div>
 
-        <div class="chart-block">
-            <h3>Growth of Households</h3>
-            <p class="chart-caption">
-                The increase in the number of households provides demographic context
-                for growth and shows how the country has expanded alongside rising income.
-            </p>
-            <div id="chart-household-growth" class="vis-container"></div>
-        </div>
+            <div class="chart-block">
+                <h3>National Household Income Over Time</h3>
+                <p class="chart-caption">
+                    Mean and median household income have both risen over time, <br>
+                    showing that Malaysia has become wealthier overall.
+                </p>
+                <div id="chart-income-time" class="vis-container"></div>
+            </div>
 
-    </section>
+            <div class="chart-block">
+                <h3>Growth of Households</h3>
+                <p class="chart-caption">
+                    The increase in households provides demographic context for growth <br>
+                    and shows how the country expanded alongside rising income.
+                </p>
+                <div id="chart-household-growth" class="vis-container"></div>
+            </div>
 
-    <section class="story-section">
+        </section>
 
-        <h2>Section 2: Uneven Prosperity</h2>
-        <p class="section-text">
-            National growth does not mean every state has benefited equally.
-            Looking across states reveals sharp differences in household income,
-            with some places enjoying much higher prosperity than others.
-        </p>
+        <section class="story-section">
 
-        <div class="chart-block">
-            <h3>Income Choropleth Map</h3>
-            <p class="chart-caption">
-                Mapping household income shows that prosperity is unevenly distributed across Malaysia,
-                with clear geographic patterns of advantage and disadvantage.
-            </p>
-            <div id="chart-income-map" class="vis-container"></div>
-        </div>
-
-        <div class="chart-block">
-            <h3>State Income Ranking</h3>
-            <p class="chart-caption">
-                Ranking states by household income makes the size of these differences easier to compare directly.
-            </p>
+            <h2>Section 2: Uneven Prosperity</h2>
             <p class="section-text">
-                These income gaps matter because lower-income states are often more vulnerable to poverty and weaker living conditions.
+                National growth does not mean every state has benefited equally.
+                Looking across states reveals sharp differences in household income,
+                with some places enjoying much higher prosperity than others.
             </p>
-            <div id="chart-income-ranking" class="vis-container"></div>
-        </div>
-    </section>
 
-    <section class="story-section">
+            <div class="chart-block">
+                <h3>Income Choropleth Map</h3>
+                <p class="chart-caption">
+                    Mapping household income shows that prosperity is unevenly distributed across Malaysia,
+                    with clear geographic patterns of advantage and disadvantage.
+                </p>
+                <div id="chart-income-map" class="vis-container"></div>
+            </div>
 
-        <h2>Section 3: Poverty</h2>
-        <p class="section-text">
-            Income differences matter because lower prosperity is often tied to greater vulnerability.
-            Poverty data helps show where economic hardship remains concentrated.
-        </p>
+            <div class="chart-block">
+                <h3>State Income Ranking</h3>
+                <p class="chart-caption">
+                    Ranking states by household income makes the size of these differences easier to compare directly.
+                </p>
+                <p class="section-text">
+                    These income gaps matter because lower-income states are often more vulnerable to poverty and weaker
+                    living conditions.
+                </p>
+                <div id="chart-income-ranking" class="vis-container"></div>
+            </div>
+        </section>
 
-        <div class="chart-block">
-            <h3>Poverty Rate Map</h3>
-            <p class="chart-caption">
-                A poverty map reveals where households remain more exposed to economic hardship despite broader national growth.
+        <section class="story-section">
+
+            <h2>Section 3: Poverty</h2>
+            <p class="section-text">
+                Income differences matter because lower prosperity is often tied to greater vulnerability.
+                Poverty data helps show where economic hardship remains concentrated.
             </p>
-            <div id="chart-poverty-map" class="vis-container"></div>
-        </div>
 
-        <div class="chart-block">
-            <h3>Income Versus Poverty</h3>
-            <p class="chart-caption">
-                Comparing income with poverty shows how strongly prosperity and deprivation are linked across states.
+            <div class="chart-block">
+                <h3>Poverty Rate Map</h3>
+                <p class="chart-caption">
+                    A poverty map reveals where households remain more exposed to economic hardship despite broader
+                    national growth.
+                </p>
+                <div id="chart-poverty-map" class="vis-container"></div>
+            </div>
+
+            <div class="chart-block">
+                <h3>Income Versus Poverty</h3>
+                <p class="chart-caption">
+                    Comparing income with poverty shows how strongly prosperity and deprivation are linked across
+                    states.
+                </p>
+                <div id="chart-income-poverty" class="vis-container"></div>
+            </div>
+        </section>
+
+        <section class="story-section">
+
+            <h2>Section 4: Hidden Inequality</h2>
+            <p class="section-text">
+                Higher income does not always mean households share prosperity evenly.
+                Inequality measures reveal that some places may appear better off overall
+                while still containing deep internal gaps.
             </p>
-            <div id="chart-income-poverty" class="vis-container"></div>
-        </div>
-    </section>
 
-    <section class="story-section">
+            <div class="chart-block">
+                <h3>Gini Trends Across States</h3>
+                <p class="chart-caption">
+                    Tracking Gini coefficients over time shows that inequality has changed
+                    differently across states rather than following one national pattern.
+                </p>
+                <div id="chart-gini-multiline" class="vis-container"></div>
+            </div>
 
-        <h2>Section 4: Hidden Inequality</h2>
-        <p class="section-text">
-            Higher income does not always mean households share prosperity evenly.
-            Inequality measures reveal that some places may appear better off overall
-            while still containing deep internal gaps.
-        </p>
+            <div class="chart-block">
+                <h3>Income Versus Gini</h3>
+                <p class="chart-caption">
+                    Comparing income with inequality highlights a key tension: richer states
+                    are not necessarily more equal.
+                </p>
+                <div id="chart-income-gini" class="vis-container"></div>
+            </div>
+        </section>
 
-        <div class="chart-block">
-            <h3>Gini Trends Across States</h3>
-            <p class="chart-caption">
-                Tracking Gini coefficients over time shows that inequality has changed
-                differently across states rather than following one national pattern.
+        <section class="story-section">
+
+            <h2>Section 5: Cost of Living</h2>
+            <p class="section-text">
+                Household wellbeing depends not only on income, but also on what households must spend.
+                In some states, higher incomes may be offset by higher living costs.
             </p>
-            <div id="chart-gini-multiline" class="vis-container"></div>
-        </div>
 
-        <div class="chart-block">
-            <h3>Income Versus Gini</h3>
-            <p class="chart-caption">
-                Comparing income with inequality highlights a key tension: richer states
-                are not necessarily more equal.
+            <div class="chart-block">
+                <h3>Income Versus Expenditure</h3>
+                <p class="chart-caption">
+                    Comparing income and expenditure reveals where
+                    higher earnings may come with greater cost pressures.
+                </p>
+                <div id="chart-income-expenditure" class="vis-container"></div>
+            </div>
+
+            <div class="chart-block">
+                <h3>Expenditure Ranking</h3>
+                <p class="chart-caption">
+                    Ranking states by household spending helps identify where
+                    the cost of living may place the greatest burden on households.
+                </p>
+                <div id="chart-expenditure-ranking" class="vis-container"></div>
+            </div>
+
+        </section>
+
+        <section class="story-section">
+
+            <h2>Section 6: Living Conditions</h2>
+            <p class="section-text">
+                Economic outcomes ultimately shape everyday life.
+                Access to water, electricity, and sanitation provides a more human picture of uneven development.
             </p>
-            <div id="chart-income-gini" class="vis-container"></div>
-        </div>
-    </section>
 
-    <section class="story-section">
+            <div class="chart-block">
+                <h3>Amenities Map Over Time</h3>
+                <p class="chart-caption">
+                    Use the year slider and amenity selector to track how
+                    essential services change across states over time.
+                </p>
+                <div id="chart-amenities-comparison" class="vis-container"></div>
+            </div>
 
-        <h2>Section 5: Cost of Living</h2>
-        <p class="section-text">
-            Household wellbeing depends not only on income, but also on what households must spend. 
-            In some states, higher incomes may be offset by higher living costs.
-        </p>
+        </section>
 
-        <div class="chart-block">
-            <h3>Income Versus Expenditure</h3>
-            <p class="chart-caption">
-                Comparing income and expenditure reveals where
-                higher earnings may come with greater cost pressures.
+        <section class="story-section">
+
+            <h2>Section 7: Distribution</h2>
+            <p class="section-text">
+                National averages can hide how income is distributed across households.
+                Looking across percentiles reveals who is benefiting most from growth
+                and who remains left behind.
             </p>
-            <div id="chart-income-expenditure" class="vis-container"></div>
-        </div>
 
-        <div class="chart-block">
-            <h3>Expenditure Ranking</h3>
-            <p class="chart-caption">
-                Ranking states by household spending helps identify where
-                the cost of living may place the greatest burden on households.
+            <div class="chart-block">
+                <h3>Percentile Distribution</h3>
+                <p class="chart-caption">
+                    A custom distribution chart shows the shape of household income
+                    across the population rather than relying on summary averages.
+                </p>
+                <div id="chart-percentile-distribution" class="vis-container"></div>
+            </div>
+        </section>
+
+        <section class="story-section conclusion">
+            <h2>Conclusion: Growth Is Not the Same as Wellbeing</h2>
+            <p class="section-text">
+                Malaysia's household story is not simply one of economic growth.
+                While the country has become richer, prosperity remains uneven across states,
+                inequality persists within them, and access to basic living conditions is not uniform.
+                Economic growth does not guarantee equal wellbeing.
             </p>
-            <div id="chart-expenditure-ranking" class="vis-container"></div>
-        </div>
-
-    </section>
-
-    <section class="story-section">
-
-        <h2>Section 6: Living Conditions</h2>
-        <p class="section-text">
-            Economic outcomes ultimately shape everyday life. 
-            Access to water, electricity, and sanitation provides a more human picture of uneven development.
-        </p>
-
-        <div class="chart-block">
-            <h3>Amenities Map Over Time</h3>
-            <p class="chart-caption">
-                Use the year slider and amenity selector to track how
-                essential services change across states over time.
-            </p>
-            <div id="chart-amenities-comparison" class="vis-container"></div>
-        </div>
-
-    </section>
-
-    <section class="story-section">
-
-        <h2>Section 7: Distribution</h2>
-        <p class="section-text">
-            National averages can hide how income is distributed across households.
-            Looking across percentiles reveals who is benefiting most from growth
-            and who remains left behind.
-        </p>
-
-        <div class="chart-block">
-            <h3>Percentile Distribution</h3>
-            <p class="chart-caption">
-                A custom distribution chart shows the shape of household income
-                across the population rather than relying on summary averages.
-            </p>
-            <div id="chart-percentile-distribution" class="vis-container"></div>
-        </div>
-    </section>
-
-    <section class="story-section conclusion">
-        <h2>Conclusion: Growth Is Not the Same as Wellbeing</h2>
-        <p class="section-text">
-            Malaysia's household story is not simply one of economic growth.
-            While the country has become richer, prosperity remains uneven across states,
-            inequality persists within them, and access to basic living conditions is not uniform.
-            Economic growth does not guarantee equal wellbeing.
-        </p>
-    </section>
+        </section>
 
     </div>
 
     <script src="javascript/main.js"></script>
+    <script src="javascript/inteactivity.js"></script>
 </body>
+
 </html>

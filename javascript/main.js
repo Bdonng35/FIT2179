@@ -2,12 +2,16 @@ var embedOptions = { actions: false };
 
 var vg_1 = "charts/line_chart.json";
 vegaEmbed("#chart-income-time", vg_1, embedOptions).then(function(result) {
-    // Access the Vega view instance as result.view
+    if (window.registerChartView) {
+        window.registerChartView("chart-income-time", result.view);
+    }
 }).catch(console.error);
 
 var vg_2 = "charts/household_growth.json";
 vegaEmbed("#chart-household-growth", vg_2, embedOptions).then(function(result) {
-    // Access the Vega view instance as result.view
+    if (window.registerChartView) {
+        window.registerChartView("chart-household-growth", result.view);
+    }
 }).catch(console.error);
 
 var vg_3 = "charts/income_map.json";

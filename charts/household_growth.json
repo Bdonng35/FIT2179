@@ -1,52 +1,117 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "Growth in Malaysian households over time.",
+    "width": 470,
+    "height": 400,
     "data": {
         "url": "data/hh_lq.csv"
     },
-    
-    "width": 700,
-    "height": 420,
-    "mark": {
-        "type": "line",
-        "point": {
-            "filled": true,
-            "size": 70,
-            "color": "#6f5a46"
+    "params": [
+        {
+            "name": "SelectedYear",
+            "value": 2022
+        }
+    ],
+    "transform": [
+        {
+            "calculate": "year(toDate(datum.date))",
+            "as": "year_num"
         },
-        "strokeWidth": 3,
-        "color": "#6f5a46"
-    },
-    "encoding": {
-        "x": {
-            "field": "date",
-            "type": "temporal",
-            "title": "Year",
-            "axis": {
-                "format": "%Y",
-                "labelAngle": 0
-            }
+        {
+            "filter": "datum.year_num <= SelectedYear"
         },
-        "y": {
-            "field": "households",
-            "type": "quantitative",
-            "title": "Number of Households" 
-        },
-        "tooltip": [
-            {
-                "field": "date",
-                "type": "temporal",
-                "title": "Year",
-                "format": "%Y"
+        {
+            "calculate": "datum.households / 1000000",
+            "as": "households_millions"
+        }
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "line",
+                "strokeWidth": 3,
+                "color": "#6f5a46"
             },
-            {
-                "field": "households",
-                "type": "quantitative",
-                "title": "Households",
-                "format": ",.0f"
+            "encoding": {
+                "x": {
+                    "field": "date",
+                    "type": "temporal",
+                    "title": "Year",
+                    "axis": {
+                        "format": "%Y",
+                        "labelAngle": 0
+                    }
+                },
+                "y": {
+                    "field": "households_millions",
+                    "type": "quantitative",
+                    "title": "Number of Households (Millions)"
+                }
             }
-        ]
-    },
+        },
+        {
+            "mark": {
+                "type": "point",
+                "filled": true,
+                "size": 76,
+                "color": "#6f5a46"
+            },
+            "encoding": {
+                "x": {
+                    "field": "date",
+                    "type": "temporal"
+                },
+                "y": {
+                    "field": "households_millions",
+                    "type": "quantitative"
+                },
+                "tooltip": [
+                    {
+                        "field": "year_num",
+                        "type": "quantitative",
+                        "title": "Year",
+                        "format": "d"
+                    },
+                    {
+                        "field": "households",
+                        "type": "quantitative",
+                        "title": "Households",
+                        "format": ",.0f"
+                    }
+                ]
+            }
+        },
+        {
+            "data": {
+                "values": [
+                    {
+                        "note": "Households kept growing,\nbut resilience remained\nvulnerable to crises."
+                    }
+                ]
+            },
+            "mark": {
+                "type": "text",
+                "align": "left",
+                "baseline": "top",
+                "fontSize": 11.5,
+                "fontWeight": "600",
+                "lineBreak": "\n",
+                "color": "#5a4c34"
+            },
+            "encoding": {
+                "x": {
+                    "value": 28
+                },
+                "y": {
+                    "value": 26
+                },
+                "text": {
+                    "field": "note",
+                    "type": "nominal"
+                }
+            }
+        }
+    ],
     "config": {
         "background": "#fffdf8",
         "axis": {
