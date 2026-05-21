@@ -293,9 +293,6 @@
         "text": {
           "field": "focus_label",
           "type": "nominal"
-        },
-        "color": {
-          "legend": null
         }
       }
     }
