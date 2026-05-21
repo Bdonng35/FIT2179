@@ -4,7 +4,7 @@
   "height": 460,
   "title": "Gini Coefficient Trends Across States",
   "data": {
-    "url": "../data/hies_state.csv"
+    "url": "data/hies_state.csv"
   },
   "params": [
     {

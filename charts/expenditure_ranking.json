@@ -3,7 +3,7 @@
   "width": 700,
   "height": 420,
   "data": {
-    "url": "../data/hh_expenditure_state.csv"
+    "url": "data/hh_expenditure_state.csv"
   },
   "transform": [
     {

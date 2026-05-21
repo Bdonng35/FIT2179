@@ -14,7 +14,7 @@
     }
   ],
   "data": {
-    "url": "../data/hies_malaysia_percentile.csv"
+    "url": "data/hies_malaysia_percentile.csv"
   },
   "transform": [
     {

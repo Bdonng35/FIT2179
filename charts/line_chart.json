@@ -2,7 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "National household mean and median income over time in Malaysia.",
     "data": {
-        "url": "../data/hh_income.csv"
+        "url": "data/hh_income.csv"
     },
     "width": 700,
     "height": 420,
