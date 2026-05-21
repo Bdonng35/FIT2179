@@ -4,7 +4,7 @@
   "height": 420,
   "background": "#fffdf8",
   "data": {
-    "url": "../data/hh_income_poverty_state.csv"
+    "url": "data/hh_income_poverty_state.csv"
   },
   "transform": [
     {
