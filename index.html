@@ -64,9 +64,8 @@
             <h2>Section 1: Growth</h2>
             <div class="section-intro-row">
                 <p class="section-text section-1-text">
-                    At the national level, Malaysia's household economy
-                    has improved substantially over time, showing
-                    steady wealth generation.
+                    At the national level, Malaysia's household economy has improved
+                    steadily over time, generating greater overall wealth.
                 </p>
 
                 <div class="shared-control-bar" aria-label="Section 1 year control">
@@ -79,8 +78,8 @@
             <div class="chart-block">
                 <h3>National Household Income Over Time</h3>
                 <p class="chart-caption">
-                    Mean and median household income have both risen over time, <br>
-                    showing that Malaysia has become wealthier overall.
+                    Mean and median household income have both risen over time, showing
+                    that Malaysia has become wealthier overall.
                 </p>
                 <div id="chart-income-time" class="vis-container"></div>
             </div>
@@ -88,42 +87,73 @@
             <div class="chart-block">
                 <h3>Growth of Households</h3>
                 <p class="chart-caption">
-                    The increase in households provides demographic context for growth <br>
-                    and shows how the country expanded alongside rising income.
+                    The increase in households provides demographic context for growth and
+                    shows how the country expanded alongside rising income.
                 </p>
                 <div id="chart-household-growth" class="vis-container"></div>
             </div>
 
         </section>
 
-        <section class="story-section">
+        <section class="story-section section-income">
 
             <h2>Section 2: Uneven Prosperity</h2>
-            <p class="section-text">
-                National growth does not mean every state has benefited equally.
-                Looking across states reveals sharp differences in household income,
-                with some places enjoying much higher prosperity than others.
-            </p>
-
-            <div class="chart-block">
-                <h3>Income Choropleth Map</h3>
-                <p class="chart-caption">
-                    Mapping household income shows that prosperity is unevenly distributed across Malaysia,
-                    with clear geographic patterns of advantage and disadvantage.
-                </p>
-                <div id="chart-income-map" class="vis-container"></div>
+            <div class="income-row income-row-top">
+                <div class="income-col-main">
+                    <div class="chart-block chart-block-wide income-map-block">
+                        <h3>Income Choropleth Map and State Rankings</h3>
+                        <div id="chart-income-map" class="vis-container income-map-panel"></div>
+                    </div>
+                </div>
+                <aside class="income-col-side income-top-side">
+                    <div class="income-top-module">
+                        <div class="income-map-legend" aria-label="Median household income band legend">
+                            <div class="income-map-legend-title">Median Household Income Band</div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch legend-1"></span><span>Below RM4,500</span></div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch legend-2"></span><span>RM4,500 to RM5,499</span></div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch legend-3"></span><span>RM5,500 to RM6,999</span></div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch legend-4"></span><span>RM7,000 to RM8,999</span></div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch legend-5"></span><span>RM9,000 and above</span></div>
+                        </div>
+                        <p class="chart-caption income-side-intro">
+                            National growth has not benefited every <br>
+                            state equally. Across Malaysia, household income reveals
+                            sharp regional differences <br>
+                            in prosperity.
+                        </p>
+                        <p class="income-side-note">
+                            Note: Bigger surface area does not necessarily 
+                            mean higher household income.
+                        </p>
+                    </div>
+                </aside>
             </div>
 
-            <div class="chart-block">
-                <h3>State Income Ranking</h3>
-                <p class="chart-caption">
-                    Ranking states by household income makes the size of these differences easier to compare directly.
-                </p>
-                <p class="section-text">
-                    These income gaps matter because lower-income states are often more vulnerable to poverty and weaker
-                    living conditions.
-                </p>
-                <div id="chart-income-ranking" class="vis-container"></div>
+            <div class="income-row income-row-bottom">
+                <div class="income-col-main">
+                    <div class="chart-block chart-block-wide income-ranking-block">
+                        <div id="chart-income-ranking" class="vis-container income-ranking-panel"></div>
+                    </div>
+                </div>
+                <aside class="income-col-side income-bottom-side">
+                    <div class="income-insights-grid income-map-insights">
+                        <div class="income-insight-card">
+                            <h4>Highest Ranking States</h4>
+                            <p>
+                                Kuala Lumpur, Putrajaya, and Selangor lead because high-value services, finance,
+                                administration, manufacturing, and logistics are concentrated in these metropolitan hubs.
+                            </p>
+                        </div>
+                        <div class="income-insight-card">
+                            <h4>Lowest Ranking States</h4>
+                            <p>
+                                Perak, Kedah, and Kelantan remain lower-income because their economies rely more on
+                                traditional agriculture and less on high-value industry, with weaker urbanization and
+                                slower infrastructure development.
+                            </p>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </section>
 

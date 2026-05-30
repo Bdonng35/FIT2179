@@ -112,15 +112,21 @@
             "data": {
                 "values": [
                     {
+                        "min_year": 1997,
                         "note": "1997 Asian Financial Crisis:\nvisible income contraction"
                     }
                 ]
             },
+            "transform": [
+                {
+                    "filter": "SelectedYear >= datum.min_year"
+                }
+            ],
             "mark": {
                 "type": "text",
                 "align": "left",
                 "baseline": "top",
-                "fontSize": 11.5,
+                "fontSize": 10.5,
                 "fontWeight": "600",
                 "lineBreak": "\n",
                 "tooltip": false
@@ -145,15 +151,21 @@
             "data": {
                 "values": [
                     {
+                        "min_year": 2020,
                         "note": "2020 COVID-19 downturn:\nrecovery was not immune\nto macro shocks"
                     }
                 ]
             },
+            "transform": [
+                {
+                    "filter": "SelectedYear >= datum.min_year"
+                }
+            ],
             "mark": {
                 "type": "text",
                 "align": "left",
                 "baseline": "top",
-                "fontSize": 11.5,
+                "fontSize": 10.5,
                 "fontWeight": "600",
                 "lineBreak": "\n",
                 "tooltip": false

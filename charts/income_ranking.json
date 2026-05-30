@@ -1,7 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 420,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "width": "container",
+  "height": 360,
+  "padding": {
+    "top": 0,
+    "right": 12,
+    "bottom": 0,
+    "left": 0
+  },
+  "params": [
+    {
+      "name": "selectedState",
+      "value": null
+    }
+  ],
   "data": {
     "url": "data/hh_income_state.csv"
   },
@@ -24,6 +40,10 @@
     {
       "calculate": "datum.income_median_num < 4500 ? 1 : datum.income_median_num < 5500 ? 2 : datum.income_median_num < 7000 ? 3 : datum.income_median_num < 9000 ? 4 : 5",
       "as": "income_band_order"
+    },
+    {
+      "calculate": "datum.state == 'Kuala Lumpur' || datum.state == 'Putrajaya' || datum.state == 'Selangor' || datum.state == 'Perak' || datum.state == 'Kedah' || datum.state == 'Kelantan'",
+      "as": "is_emphasized"
     }
   ],
   "encoding": {
@@ -49,6 +69,10 @@
         "Kelantan"
       ],
       "title": null,
+      "scale": {
+        "paddingInner": 0.1,
+        "paddingOuter": 0.02
+      },
       "axis": {
         "labelLimit": 220,
         "labelFontSize": 12
@@ -97,19 +121,77 @@
     {
       "mark": {
         "type": "bar",
-        "cornerRadiusEnd": 3
+        "cornerRadiusEnd": 3,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "opacity": {
+          "condition": {
+            "test": "selectedState === null || datum.state === selectedState",
+            "value": 1
+          },
+          "value": 0.2
+        }
       }
     },
     {
+      "transform": [
+        {
+          "filter": "!datum.is_emphasized"
+        }
+      ],
       "mark": {
         "type": "text",
         "align": "left",
         "baseline": "middle",
         "dx": 6,
         "fontSize": 11,
-        "color": "#5c4520"
+        "cursor": "pointer"
       },
       "encoding": {
+        "color": {
+          "value": "#5c4520"
+        },
+        "opacity": {
+          "condition": {
+            "test": "selectedState === null || datum.state === selectedState",
+            "value": 0.6
+          },
+          "value": 0.16
+        },
+        "text": {
+          "field": "income_median_num",
+          "type": "quantitative",
+          "format": ",.0f"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.is_emphasized"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "fontSize": 13,
+        "fontWeight": 600,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "color": {
+          "value": "#5c4520"
+        },
+        "opacity": {
+          "condition": {
+            "test": "selectedState === null || datum.state === selectedState",
+            "value": 1
+          },
+          "value": 0.16
+        },
         "text": {
           "field": "income_median_num",
           "type": "quantitative",

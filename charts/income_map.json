@@ -1,12 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 320,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "width": "container",
+  "height": 370,
+  "padding": 0,
   "projection": {
   "type": "mercator",
-  "center": [109.5, 4.0],
-  "scale": 1910
+  "center": [109.3, 3.7],
+  "scale": 2000
 },
+  "params": [
+    {
+      "name": "selectedState",
+      "value": null
+    }
+  ],
   "layer": [
     {
       "data": {
@@ -94,7 +105,8 @@
       "mark": {
         "type": "geoshape",
         "stroke": "#fffdf8",
-        "strokeWidth": 1.1
+        "strokeWidth": 1.1,
+        "cursor": "pointer"
       },
       "encoding": {
         "color": {
@@ -105,11 +117,14 @@
             "domain": [1, 2, 3, 4, 5],
             "range": ["#f7edd8", "#e8c98b", "#d9a441", "#a9782f", "#6f4e1f"]
           },
-          "legend": {
-            "symbolType": "square",
-            "values": [1, 2, 3, 4, 5],
-            "labelExpr": "datum.label == '1' ? 'Below RM4,500' : datum.label == '2' ? 'RM4,500 to RM5,499' : datum.label == '3' ? 'RM5,500 to RM6,999' : datum.label == '4' ? 'RM7,000 to RM8,999' : 'RM9,000 and above'"
-          }
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "test": "selectedState === null || datum.state === selectedState",
+            "value": 1
+          },
+          "value": 0.2
         },
 
         "tooltip": [
@@ -125,6 +140,54 @@
             "format": ",.0f"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"label": "Kedah", "lon": 100.55, "lat": 6.15},
+          {"label": "Kelantan", "lon": 102.2, "lat": 6.0},
+          {"label": "Perak", "lon": 101.0, "lat": 4.8},
+          {"label": "Selangor", "lon": 101.48, "lat": 3.58},
+          {"label": "Kuala Lumpur", "lon": 101.58, "lat": 3.18},
+          {"label": "Putrajaya", "lon": 101.28, "lat": 2.83}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Poppins",
+        "fontSize": 10,
+        "fontWeight": 600,
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "color": "#000000",
+        "strokeWidth": 0,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        },
+        "color": {
+          "value": "#000000"
+        },
+        "opacity": {
+          "condition": {
+            "test": "selectedState === null || datum.state === selectedState",
+            "value": 1
+          },
+          "value": 0.18
+        }
       }
     }
   ],

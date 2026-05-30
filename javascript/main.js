@@ -1,4 +1,28 @@
 var embedOptions = { actions: false };
+var linkedStateViews = {};
+var selectedLinkedState = null;
+
+function setLinkedState(state) {
+    selectedLinkedState = state;
+    Object.values(linkedStateViews).forEach(function(view) {
+        if (view) {
+            view.signal("selectedState", state).runAsync();
+        }
+    });
+}
+
+function attachLinkedStateInteraction(key, view) {
+    linkedStateViews[key] = view;
+    view.signal("selectedState", selectedLinkedState).runAsync();
+    view.addEventListener("click", function(event, item) {
+        var clickedState = item && item.datum && item.datum.state ? item.datum.state : null;
+        if (clickedState === selectedLinkedState) {
+            setLinkedState(null);
+            return;
+        }
+        setLinkedState(clickedState);
+    });
+}
 
 var vg_1 = "charts/line_chart.json";
 vegaEmbed("#chart-income-time", vg_1, embedOptions).then(function(result) {
@@ -16,12 +40,12 @@ vegaEmbed("#chart-household-growth", vg_2, embedOptions).then(function(result) {
 
 var vg_3 = "charts/income_map.json";
 vegaEmbed("#chart-income-map", vg_3, embedOptions).then(function(result) {
-    // Access the Vega view instance as result.view
+    attachLinkedStateInteraction("map", result.view);
 }).catch(console.error);
 
 var vg_4 = "charts/income_ranking.json";
 vegaEmbed("#chart-income-ranking", vg_4, embedOptions).then(function(result) {
-    // Access the Vega view instance as result.view
+    attachLinkedStateInteraction("ranking", result.view);
 }).catch(console.error);
 
 var vg_5 = "charts/poverty_map.json";
