@@ -34,6 +34,78 @@
     {
       "mark": {
         "type": "rule",
+        "stroke": "transparent",
+        "strokeWidth": 14
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": {
+            "field": "expenditure_mean_num",
+            "order": "descending"
+          },
+          "title": null,
+          "axis": {
+            "labelLimit": 220,
+            "labelFontSize": 12
+          }
+        },
+        "x": {
+          "field": "expenditure_mean_num",
+          "type": "quantitative",
+          "title": "Monthly Household Amount (RM), 2022",
+          "scale": {
+            "domain": [
+              0,
+              14000
+            ]
+          },
+          "axis": {
+            "format": ",.0f",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "x2": {
+          "field": "income_mean_num"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_mean_num",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "expenditure_mean_num",
+            "type": "quantitative",
+            "title": "Mean Expenditure (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "income_expenditure_gap",
+            "type": "quantitative",
+            "title": "Income-Expenditure Gap (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "spending_share",
+            "type": "quantitative",
+            "title": "Expenditure Share of Mean Income",
+            "format": ".1%"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
         "stroke": "#b8c2cb",
         "strokeWidth": 1.8
       },
@@ -70,6 +142,37 @@
         "x2": {
           "field": "income_mean_num"
         },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_mean_num",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "expenditure_mean_num",
+            "type": "quantitative",
+            "title": "Mean Expenditure (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "income_expenditure_gap",
+            "type": "quantitative",
+            "title": "Income-Expenditure Gap (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "spending_share",
+            "type": "quantitative",
+            "title": "Expenditure Share of Mean Income",
+            "format": ".1%"
+          }
+        ],
         "opacity": {
           "condition": {
             "test": "datum.highlight_state == 1",
@@ -77,8 +180,7 @@
           },
           "value": 0.45
         }
-      },
-      "interactive": false
+      }
     },
     {
       "mark": {

@@ -49,7 +49,7 @@ body {
 }
 
 .story-section {
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   padding-top: 0;
 }
 
@@ -59,7 +59,7 @@ body {
   column-gap: 28px;
   row-gap: 0;
   align-items: start;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .section-two-up h2,
@@ -144,19 +144,19 @@ h4 {
 }
 
 .section-income {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .section-poverty {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .section-gini {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .section-expenditure {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .expenditure-row-top {
@@ -169,7 +169,11 @@ h4 {
 }
 
 .expenditure-row-bottom {
-  margin-top: -56px;
+  margin-top: -53px;
+}
+
+.expenditure-ranking-block h3 {
+  margin-bottom: 8px;
 }
 
 .expenditure-bottom-side {
@@ -307,12 +311,12 @@ h4 {
 }
 
 .income-row-bottom {
-  margin-top: -50px;
+  margin-top: -40px;
 }
 
 .income-bottom-side {
   justify-content: flex-start;
-  padding-top: 0;
+  padding-top: 0px;
 }
 
 .interaction-note {
@@ -341,12 +345,12 @@ h4 {
 }
 
 .poverty-row-bottom {
-  margin-top: -56px;
+  margin-top: -46px;
 }
 
 .poverty-bottom-side {
   justify-content: flex-start;
-  padding-top: 0;
+  padding-top: 0px;
 }
 
 .poverty-scatter-legend {
@@ -737,6 +741,30 @@ h4 {
   flex-direction: column;
   justify-content: flex-start;
   gap: 6px;
+}
+
+.distribution-top-side {
+  padding-top: 45px;
+}
+
+.distribution-top-side .income-map-legend {
+  margin-bottom: 2px;
+}
+
+.distribution-top-side .income-side-intro {
+  margin-bottom: 6px;
+}
+
+.section-expenditure .expenditure-top-side {
+  padding-top: 0 !important;
+}
+
+.section-expenditure .expenditure-bottom-side {
+  padding-top: 12px !important;
+}
+
+.section-expenditure .income-map-insights {
+  gap: 14px;
 }
 
 .conclusion-box {

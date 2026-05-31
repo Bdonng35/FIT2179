@@ -1,4 +1,4 @@
-var embedOptions = { actions: false };
+var embedOptions = { actions: false, tooltip: true, renderer: "svg" };
 var linkedStateViews = {};
 var selectedLinkedState = null;
 
