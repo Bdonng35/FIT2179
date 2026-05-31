@@ -1,41 +1,21 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 760,
-  "height": 460,
-  "title": "Gini Coefficient Trends Across States",
+  "width": "container",
+  "height": 430,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "data": {
     "url": "data/hies_state.csv"
   },
   "params": [
     {
-      "name": "StartYear",
-      "value": 1974,
-      "bind": {
-        "input": "range",
-        "min": 1974,
-        "max": 2022,
-        "step": 1,
-        "name": "Start year: "
-      }
-    },
-    {
-      "name": "EndYear",
-      "value": 2022,
-      "bind": {
-        "input": "range",
-        "min": 1974,
-        "max": 2022,
-        "step": 1,
-        "name": "End year: "
-      }
-    },
-    {
       "name": "FocusState",
-      "value": "Show All",
+      "value": "Selangor",
       "bind": {
         "input": "select",
         "options": [
-          "Show All",
           "Johor",
           "Kedah",
           "Kelantan",
@@ -67,65 +47,11 @@
       "as": "gini_num"
     },
     {
-      "filter": "datum.year >= StartYear && datum.year <= EndYear"
-    },
-    {
-      "calculate": "FocusState == 'Show All' ? 'all' : (datum.state == FocusState ? 'focus' : 'other')",
+      "calculate": "datum.state == FocusState ? 'focus' : 'other'",
       "as": "focus_status"
     }
   ],
-  "encoding": {
-    "color": {
-      "field": "state",
-      "type": "nominal",
-      "title": "State",
-      "scale": {
-        "domain": [
-          "Johor",
-          "Kedah",
-          "Kelantan",
-          "Kuala Lumpur",
-          "Labuan",
-          "Melaka",
-          "Negeri Sembilan",
-          "Pahang",
-          "Perak",
-          "Perlis",
-          "Pulau Pinang",
-          "Putrajaya",
-          "Sabah",
-          "Sarawak",
-          "Selangor",
-          "Terengganu"
-        ],
-        "range": [
-          "#332288",
-          "#88CCEE",
-          "#44AA99",
-          "#117733",
-          "#999933",
-          "#DDCC77",
-          "#6F86C9",
-          "#3E5C76",
-          "#AA4499",
-          "#661100",
-          "#6699CC",
-          "#888888",
-          "#1f77b4",
-          "#ff7f0e",
-          "#9467bd",
-          "#17becf"
-        ]
-      },
-      "legend": {
-        "orient": "right",
-        "direction": "vertical",
-        "columns": 1,
-        "symbolType": "circle",
-        "symbolSize": 90
-      }
-    }
-  },
+  "encoding": {},
   "layer": [
     {
       "mark": {
@@ -137,11 +63,34 @@
           "type": "quantitative",
           "title": "Year",
           "scale": {
-            "domain": [1974, 2022],
+            "domain": [
+              1974,
+              2022
+            ],
             "nice": false
           },
           "axis": {
-            "values": [1974, 1976, 1979, 1984, 1987, 1989, 1992, 1995, 1997, 1999, 2002, 2004, 2007, 2009, 2012, 2014, 2016, 2019, 2022],
+            "values": [
+              1974,
+              1976,
+              1979,
+              1984,
+              1987,
+              1989,
+              1992,
+              1995,
+              1997,
+              1999,
+              2002,
+              2004,
+              2007,
+              2009,
+              2012,
+              2014,
+              2016,
+              2019,
+              2022
+            ],
             "labelAngle": 0,
             "labelFontSize": 11,
             "format": "d"
@@ -152,7 +101,10 @@
           "type": "quantitative",
           "title": "Gini Coefficient",
           "scale": {
-            "domain": [0.30, 0.62]
+            "domain": [
+              0.30,
+              0.62
+            ]
           },
           "axis": {
             "format": ".2f",
@@ -167,6 +119,13 @@
           "field": "year",
           "type": "quantitative"
         },
+        "color": {
+          "condition": {
+            "test": "datum.focus_status == 'focus'",
+            "value": "#2b6cb0"
+          },
+          "value": "#c7c7c7"
+        },
         "strokeWidth": {
           "condition": {
             "test": "datum.focus_status == 'focus'",
@@ -175,24 +134,18 @@
           "value": 1.8
         },
         "opacity": {
-          "condition": [
-            {
-              "test": "datum.focus_status == 'focus'",
-              "value": 1
-            },
-            {
-              "test": "datum.focus_status == 'all'",
-              "value": 0.72
-            }
-          ],
-          "value": 0.12
+          "condition": {
+            "test": "datum.focus_status == 'focus'",
+            "value": 1
+          },
+          "value": 0.25
         }
       }
     },
     {
       "transform": [
         {
-          "filter": "datum.focus_status == 'focus' || datum.focus_status == 'all'"
+          "filter": "datum.focus_status == 'focus'"
         }
       ],
       "mark": {
@@ -214,17 +167,14 @@
         "detail": {
           "field": "state"
         },
+        "color": {
+          "value": "#2b6cb0"
+        },
         "opacity": {
-          "condition": [
-            {
-              "test": "datum.focus_status == 'focus'",
-              "value": 1
-            },
-            {
-              "test": "datum.focus_status == 'all'",
-              "value": 0.55
-            }
-          ],
+          "condition": {
+            "test": "datum.focus_status == 'focus'",
+            "value": 1
+          },
           "value": 0.12
         },
         "tooltip": [
@@ -249,31 +199,77 @@
       }
     },
     {
+      "data": {
+        "values": [
+          {
+            "state": "Johor",
+            "insight": "Inequality eased from higher 1970s levels and\nhas stabilized around 0.36 in recent years."
+          },
+          {
+            "state": "Kedah",
+            "insight": "The long-run decline is clear, but progress was not\nsmooth and inequality still sits above some peers."
+          },
+          {
+            "state": "Kelantan",
+            "insight": "Starting from one of the highest levels, Kelantan improved\nsubstantially but still ends relatively elevated."
+          },
+          {
+            "state": "Kuala Lumpur",
+            "insight": "High incomes did not eliminate inequality; the\ncapital still remains on the higher side by 2022."
+          },
+          {
+            "state": "Labuan",
+            "insight": "Labuan finishes with the lowest 2022 Gini, making\nit one of the most equal outcomes in the series."
+          },
+          {
+            "state": "Melaka",
+            "insight": "Melaka improved sharply over the long run, though\ninequality rose again after its 2014 low."
+          },
+          {
+            "state": "Negeri Sembilan",
+            "insight": "Its decline is gradual and steady, ending close to\nthe national middle rather than the extremes."
+          },
+          {
+            "state": "Pahang",
+            "insight": "Pahang reaches its series low in 2022, marking one\nof the stronger late-period equalization outcomes."
+          },
+          {
+            "state": "Perak",
+            "insight": "Perak narrowed inequality over time, but recent readings\nsuggest a mid-range rather than standout improvement."
+          },
+          {
+            "state": "Perlis",
+            "insight": "Recent inequality is comparatively low, though\nprogress flattened after earlier declines."
+          },
+          {
+            "state": "Pulau Pinang",
+            "insight": "It fell steeply from a very unequal starting point, yet\n2022 still lands in a moderate rather than low range."
+          },
+          {
+            "state": "Putrajaya",
+            "insight": "Unlike most states, Putrajaya does not show a clear\nlong-run decline and ends near where it began."
+          },
+          {
+            "state": "Sabah",
+            "insight": "Sabah remains among the highest by 2022, showing that\ninequality stayed persistently difficult to narrow."
+          },
+          {
+            "state": "Sarawak",
+            "insight": "The trend is steadily downward, with the lowest reading\narriving at the end of the series in 2022."
+          },
+          {
+            "state": "Selangor",
+            "insight": "Selangor grew richer, but inequality only eased gradually,\nreinforcing that wealth does not guarantee equality."
+          },
+          {
+            "state": "Terengganu",
+            "insight": "Terengganu shows one of the strongest long-run declines,\nreaching its most equal reading in 2022."
+          }
+        ]
+      },
       "transform": [
         {
           "filter": "datum.state == FocusState"
-        },
-        {
-          "window": [
-            {
-              "op": "rank",
-              "as": "rank_order"
-            }
-          ],
-          "sort": [
-            {
-              "field": "year",
-              "order": "descending"
-            }
-          ],
-          "groupby": ["state"]
-        },
-        {
-          "filter": "datum.rank_order == 1"
-        },
-        {
-          "calculate": "'Focused state: ' + datum.state",
-          "as": "focus_label"
         }
       ],
       "mark": {
@@ -281,17 +277,19 @@
         "align": "left",
         "baseline": "top",
         "fontSize": 13,
-        "fontWeight": "700"
+        "fontWeight": "500",
+        "lineBreak": "\n",
+        "color": "#222222"
       },
       "encoding": {
         "x": {
-          "value": 520
+          "value": 132
         },
         "y": {
           "value": 18
         },
         "text": {
-          "field": "focus_label",
+          "field": "insight",
           "type": "nominal"
         }
       }

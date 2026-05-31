@@ -82,6 +82,11 @@ body {
   margin: 0;
 }
 
+.section-gini-text {
+  max-width: 600px;
+  margin: 0;
+}
+
 h2 {
   font-family: "Playfair Display", serif;
   font-size: 2.1rem;
@@ -144,6 +149,10 @@ h4 {
 
 .section-poverty {
   margin-bottom: 44px;
+}
+
+.section-gini {
+  margin-bottom: 56px;
 }
 
 .income-row {
@@ -280,7 +289,7 @@ h4 {
   max-width: 34ch;
   font-size: 0.9rem;
   line-height: 1.55;
-  color: #5a4c34;
+  color: #000000;
 }
 
 .interaction-note-overlay {

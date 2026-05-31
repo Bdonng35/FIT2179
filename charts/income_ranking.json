@@ -150,7 +150,7 @@
       },
       "encoding": {
         "color": {
-          "value": "#5c4520"
+          "value": "#000000"
         },
         "opacity": {
           "condition": {
@@ -183,7 +183,7 @@
       },
       "encoding": {
         "color": {
-          "value": "#5c4520"
+          "value": "#000000"
         },
         "opacity": {
           "condition": {
