@@ -30,8 +30,14 @@
       "as": "highlight_state"
     },
     {
-      "fold": ["income_mean_num", "expenditure_mean_num"],
-      "as": ["measure_key", "amount_value"]
+      "fold": [
+        "income_mean_num",
+        "expenditure_mean_num"
+      ],
+      "as": [
+        "measure_key",
+        "amount_value"
+      ]
     },
     {
       "calculate": "datum.measure_key == 'income_mean_num' ? 'Mean Income' : 'Mean Expenditure'",
@@ -69,7 +75,9 @@
               "as": "highlight_state"
             }
           ],
-          "groupby": ["state"]
+          "groupby": [
+            "state"
+          ]
         }
       ],
       "mark": {
@@ -96,7 +104,10 @@
           "type": "quantitative",
           "title": "Monthly Household Amount (RM), 2022",
           "scale": {
-            "domain": [0, 14000]
+            "domain": [
+              0,
+              14000
+            ]
           },
           "axis": {
             "format": ",.0f",
@@ -113,7 +124,8 @@
             "value": 1
           },
           "value": 0.45
-        }
+        },
+        "tooltip": null
       }
     },
     {
@@ -142,7 +154,10 @@
           "type": "quantitative",
           "title": "Monthly Household Amount (RM), 2022",
           "scale": {
-            "domain": [0, 14000]
+            "domain": [
+              0,
+              14000
+            ]
           },
           "axis": {
             "format": ",.0f",
@@ -155,13 +170,16 @@
           "type": "nominal",
           "title": null,
           "scale": {
-            "domain": ["Mean Income", "Mean Expenditure"],
-            "range": ["#8c2f39", "#4f647a"]
+            "domain": [
+              "Mean Income",
+              "Mean Expenditure"
+            ],
+            "range": [
+              "#8c2f39",
+              "#4f647a"
+            ]
           },
-          "legend": {
-            "orient": "top",
-            "direction": "horizontal"
-          }
+          "legend": null
         },
         "size": {
           "condition": {
@@ -184,6 +202,18 @@
             "title": "State"
           },
           {
+            "field": "income_mean_num",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "expenditure_mean_num",
+            "type": "quantitative",
+            "title": "Mean Expenditure (RM)",
+            "format": ",.0f"
+          },
+          {
             "field": "income_expenditure_gap",
             "type": "quantitative",
             "title": "Income-Expenditure Gap (RM)",
@@ -193,7 +223,7 @@
             "field": "spending_share",
             "type": "quantitative",
             "title": "Expenditure Share of Mean Income",
-            "format": ".0%"
+            "format": ".1%"
           }
         ]
       }
@@ -210,11 +240,12 @@
         "type": "text",
         "align": "left",
         "baseline": "top",
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "600",
         "lineBreak": "\n",
         "color": "#3b3b3b",
-        "tooltip": false
+        "tooltip": false,
+        "interactive": false
       },
       "encoding": {
         "x": {
@@ -241,11 +272,12 @@
         "type": "text",
         "align": "left",
         "baseline": "top",
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "600",
         "lineBreak": "\n",
         "color": "#3b3b3b",
-        "tooltip": false
+        "tooltip": false,
+        "interactive": false
       },
       "encoding": {
         "x": {

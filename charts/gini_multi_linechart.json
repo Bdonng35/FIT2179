@@ -33,7 +33,7 @@
           "Selangor",
           "Terengganu"
         ],
-        "name": "Focus state: "
+        "name": "State: "
       }
     }
   ],
@@ -45,10 +45,6 @@
     {
       "calculate": "toNumber(datum.gini)",
       "as": "gini_num"
-    },
-    {
-      "calculate": "datum.state == FocusState ? 'focus' : 'other'",
-      "as": "focus_status"
     }
   ],
   "encoding": {},
@@ -121,21 +117,21 @@
         },
         "color": {
           "condition": {
-            "test": "datum.focus_status == 'focus'",
+            "test": "datum.state == FocusState",
             "value": "#2b6cb0"
           },
           "value": "#c7c7c7"
         },
         "strokeWidth": {
           "condition": {
-            "test": "datum.focus_status == 'focus'",
+            "test": "datum.state == FocusState",
             "value": 3.5
           },
           "value": 1.8
         },
         "opacity": {
           "condition": {
-            "test": "datum.focus_status == 'focus'",
+            "test": "datum.state == FocusState",
             "value": 1
           },
           "value": 0.25
@@ -145,7 +141,7 @@
     {
       "transform": [
         {
-          "filter": "datum.focus_status == 'focus'"
+          "filter": "datum.state == FocusState"
         }
       ],
       "mark": {
@@ -172,7 +168,7 @@
         },
         "opacity": {
           "condition": {
-            "test": "datum.focus_status == 'focus'",
+            "test": "datum.state == FocusState",
             "value": 1
           },
           "value": 0.12
@@ -196,102 +192,6 @@
             "format": ".3f"
           }
         ]
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "state": "Johor",
-            "insight": "Inequality eased from higher 1970s levels and\nhas stabilized around 0.36 in recent years."
-          },
-          {
-            "state": "Kedah",
-            "insight": "The long-run decline is clear, but progress was not\nsmooth and inequality still sits above some peers."
-          },
-          {
-            "state": "Kelantan",
-            "insight": "Starting from one of the highest levels, Kelantan improved\nsubstantially but still ends relatively elevated."
-          },
-          {
-            "state": "Kuala Lumpur",
-            "insight": "High incomes did not eliminate inequality; the\ncapital still remains on the higher side by 2022."
-          },
-          {
-            "state": "Labuan",
-            "insight": "Labuan finishes with the lowest 2022 Gini, making\nit one of the most equal outcomes in the series."
-          },
-          {
-            "state": "Melaka",
-            "insight": "Melaka improved sharply over the long run, though\ninequality rose again after its 2014 low."
-          },
-          {
-            "state": "Negeri Sembilan",
-            "insight": "Its decline is gradual and steady, ending close to\nthe national middle rather than the extremes."
-          },
-          {
-            "state": "Pahang",
-            "insight": "Pahang reaches its series low in 2022, marking one\nof the stronger late-period equalization outcomes."
-          },
-          {
-            "state": "Perak",
-            "insight": "Perak narrowed inequality over time, but recent readings\nsuggest a mid-range rather than standout improvement."
-          },
-          {
-            "state": "Perlis",
-            "insight": "Recent inequality is comparatively low, though\nprogress flattened after earlier declines."
-          },
-          {
-            "state": "Pulau Pinang",
-            "insight": "It fell steeply from a very unequal starting point, yet\n2022 still lands in a moderate rather than low range."
-          },
-          {
-            "state": "Putrajaya",
-            "insight": "Unlike most states, Putrajaya does not show a clear\nlong-run decline and ends near where it began."
-          },
-          {
-            "state": "Sabah",
-            "insight": "Sabah remains among the highest by 2022, showing that\ninequality stayed persistently difficult to narrow."
-          },
-          {
-            "state": "Sarawak",
-            "insight": "The trend is steadily downward, with the lowest reading\narriving at the end of the series in 2022."
-          },
-          {
-            "state": "Selangor",
-            "insight": "Selangor grew richer, but inequality only eased gradually,\nreinforcing that wealth does not guarantee equality."
-          },
-          {
-            "state": "Terengganu",
-            "insight": "Terengganu shows one of the strongest long-run declines,\nreaching its most equal reading in 2022."
-          }
-        ]
-      },
-      "transform": [
-        {
-          "filter": "datum.state == FocusState"
-        }
-      ],
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "baseline": "top",
-        "fontSize": 13,
-        "fontWeight": "500",
-        "lineBreak": "\n",
-        "color": "#222222"
-      },
-      "encoding": {
-        "x": {
-          "value": 132
-        },
-        "y": {
-          "value": 18
-        },
-        "text": {
-          "field": "insight",
-          "type": "nominal"
-        }
       }
     }
   ],

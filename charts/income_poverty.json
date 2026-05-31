@@ -308,8 +308,8 @@
       "data": {
         "values": [
           {
-            "x": 400,
-            "y": 5.05,
+            "x": 350,
+            "y": 10,
             "note": "Lower income does not always\ntranslate into higher poverty.\nSome states remain modest in\nincome, yet avoid deeper hardship,\nsuggesting that cost of living and\nlocal support structures also\nshape vulnerability."
           }
         ]
@@ -318,12 +318,13 @@
         "type": "text",
         "align": "left",
         "baseline": "bottom",
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "1000",
         "lineBreak": "\n",
         "color": "#053a7f",
         "opacity": 0.98,
-        "tooltip": false
+        "tooltip": false,
+        "interactive": false
       },
       "encoding": {
         "x": {

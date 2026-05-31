@@ -1,7 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 320,
+  "width": "container",
+  "height": 370,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "params": [
     {
       "name": "Year",
@@ -26,8 +30,8 @@
   ],
   "projection": {
     "type": "mercator",
-    "center": [109.5, 4.0],
-    "scale": 1910
+    "center": [109.3, 3.7],
+    "scale": 2000
   },
   "layer": [
     {
@@ -132,11 +136,7 @@
             "domain": [1, 2, 3, 4, 5],
             "range": ["#f2efe4", "#d7d9af", "#9fc79a", "#5f9a8b", "#2f5f6d"]
           },
-          "legend": {
-            "symbolType": "square",
-            "values": [1, 2, 3, 4, 5],
-            "labelExpr": "Amenity == 'Piped Water' ? (datum.label == '1' ? 'Below 80%' : datum.label == '2' ? '80% to 89.9%' : datum.label == '3' ? '90% to 97.9%' : datum.label == '4' ? '98% to 99.9%' : '100%') : Amenity == 'Sanitation' ? (datum.label == '1' ? 'Below 98%' : datum.label == '2' ? '98% to 99.4%' : datum.label == '3' ? '99.5% to 99.8%' : datum.label == '4' ? '99.9%' : '100%') : (datum.label == '1' ? 'Below 90%' : datum.label == '2' ? '90% to 98.9%' : datum.label == '3' ? '99% to 99.8%' : datum.label == '4' ? '99.9%' : '100%')"
-          }
+          "legend": null
         },
         "tooltip": [
           {
