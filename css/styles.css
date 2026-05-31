@@ -49,7 +49,7 @@ body {
 }
 
 .story-section {
-  margin: 0 0 72px;
+  margin: 0 0 20px;
   padding-top: 0;
 }
 
@@ -59,7 +59,7 @@ body {
   column-gap: 28px;
   row-gap: 0;
   align-items: start;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .section-two-up h2,
@@ -127,7 +127,7 @@ h4 {
   margin: 1.05rem;
   line-height: 1.8;
   max-width: 760px;
-  margin: 0 0 24px;
+  margin: 0;
   color: #333333;
 }
 
@@ -144,19 +144,19 @@ h4 {
 }
 
 .section-income {
-  margin-bottom: -20px;
+  margin-bottom: 20px;
 }
 
 .section-poverty {
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 .section-gini {
-  margin-bottom: 56px;
+  margin-bottom: 20px;
 }
 
 .section-expenditure {
-  margin-bottom: 56px;
+  margin-bottom: 20px;
 }
 
 .expenditure-row-top {
@@ -424,9 +424,7 @@ h4 {
   margin-bottom: 0;
 }
 
-.section-two-up+.story-section {
-  margin-top: -20px;
-}
+/* Eliminated negative margin to support uniform 20px gaps */
 
 .shared-control-bar {
   display: flex;
@@ -496,6 +494,12 @@ h4 {
   max-width: 36ch;
 }
 
+.income-insight-card strong,
+.important-info-box strong {
+  color: #8c2f39;
+  font-weight: 700;
+}
+
 .income-map-insights .income-insight-card {
   padding: 14px 16px;
 }
@@ -509,7 +513,7 @@ h4 {
 .vis-container {
   width: 100%;
   min-height: 420px;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 @media (max-width: 900px) {
@@ -554,7 +558,7 @@ h4 {
 }
 
 .hero {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   padding-bottom: 0;
 }
 
@@ -660,32 +664,87 @@ h4 {
 
 .gini-insight-box p {
   margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: #222222 !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #4f4330 !important;
 }
 
-.section-amenities,
+.gini-insight-box strong {
+  color: #8c2f39;
+  font-weight: 700;
+}
+
+.section-amenities {
+  margin-bottom: 20px;
+}
+
 .section-distribution {
-  margin-bottom: 56px;
+  margin-bottom: 20px;
 }
 
-.amenities-row-top,
+.amenities-map-panel {
+  min-height: 395px !important;
+  height: 395px;
+  overflow: visible !important;
+}
+
+.distribution-panel {
+  min-height: 395px !important;
+  height: 395px;
+  overflow: visible !important;
+}
+
+.amenities-row-top {
+  margin-bottom: 0;
+  align-items: flex-start;
+}
+
 .distribution-row-top {
   margin-bottom: 0;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
+.expenditure-top-side,
+.expenditure-bottom-side,
 .amenities-top-side,
 .distribution-top-side {
-  padding-top: 24px;
+  padding-top: 20px;
+}
+
+.amenities-top-side .income-top-module {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+.amenities-dynamic-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 0;
+  min-height: 250px;
+  height: 250px;
+  box-sizing: border-box;
+}
+
+.amenities-legend {
+  gap: 6px !important;
+}
+
+.distribution-top-side .income-top-module {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
 }
 
 .conclusion-box {
-  margin-top: 14px;
+  margin-top: 0;
 }
 
 .amenities-dynamic-card p {
+  max-width: 100% !important;
   font-size: 0.92rem;
   line-height: 1.6;
   color: #4f4330;

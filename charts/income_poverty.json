@@ -39,7 +39,10 @@
       "mark": {
         "type": "rule",
         "stroke": "#c8b8a2",
-        "strokeDash": [5, 4],
+        "strokeDash": [
+          5,
+          4
+        ],
         "strokeWidth": 1.6,
         "opacity": 0.92
       },
@@ -97,7 +100,10 @@
       "mark": {
         "type": "rule",
         "stroke": "#c8b8a2",
-        "strokeDash": [5, 4],
+        "strokeDash": [
+          5,
+          4
+        ],
         "strokeWidth": 1.6,
         "opacity": 0.92
       },
@@ -212,7 +218,10 @@
           "type": "quantitative",
           "title": "Median Household Income (RM), 2022",
           "scale": {
-            "domain": [3200, 11500]
+            "domain": [
+              3200,
+              11500
+            ]
           },
           "axis": {
             "format": ",.0f",
@@ -225,7 +234,10 @@
           "type": "quantitative",
           "title": "Absolute Poverty Rate (%), 2022",
           "scale": {
-            "domain": [-0.5, 21]
+            "domain": [
+              -0.5,
+              21
+            ]
           },
           "axis": {
             "format": ".0f",

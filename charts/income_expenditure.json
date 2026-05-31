@@ -28,58 +28,10 @@
     {
       "calculate": "indexof(['Kuala Lumpur', 'Selangor', 'Kelantan', 'Pahang'], datum.state) >= 0 ? 1 : 0",
       "as": "highlight_state"
-    },
-    {
-      "fold": [
-        "income_mean_num",
-        "expenditure_mean_num"
-      ],
-      "as": [
-        "measure_key",
-        "amount_value"
-      ]
-    },
-    {
-      "calculate": "datum.measure_key == 'income_mean_num' ? 'Mean Income' : 'Mean Expenditure'",
-      "as": "measure_label"
     }
   ],
   "layer": [
     {
-      "transform": [
-        {
-          "aggregate": [
-            {
-              "op": "max",
-              "field": "income_mean_num",
-              "as": "income_mean_num"
-            },
-            {
-              "op": "max",
-              "field": "expenditure_mean_num",
-              "as": "expenditure_mean_num"
-            },
-            {
-              "op": "max",
-              "field": "spending_share",
-              "as": "spending_share"
-            },
-            {
-              "op": "max",
-              "field": "income_expenditure_gap",
-              "as": "income_expenditure_gap"
-            },
-            {
-              "op": "max",
-              "field": "highlight_state",
-              "as": "highlight_state"
-            }
-          ],
-          "groupby": [
-            "state"
-          ]
-        }
-      ],
       "mark": {
         "type": "rule",
         "stroke": "#b8c2cb",
@@ -124,8 +76,85 @@
             "value": 1
           },
           "value": 0.45
+        }
+      },
+      "interactive": false
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "stroke": "#fffdf8",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "ordinal",
+          "sort": {
+            "field": "expenditure_mean_num",
+            "order": "descending"
+          }
         },
-        "tooltip": null
+        "x": {
+          "field": "income_mean_num",
+          "type": "quantitative",
+          "title": "Monthly Household Amount (RM), 2022",
+          "scale": {
+            "domain": [
+              0,
+              14000
+            ]
+          }
+        },
+        "color": {
+          "value": "#8c2f39"
+        },
+        "size": {
+          "condition": {
+            "test": "datum.highlight_state == 1",
+            "value": 125
+          },
+          "value": 85
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.highlight_state == 1",
+            "value": 1
+          },
+          "value": 0.55
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_mean_num",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "expenditure_mean_num",
+            "type": "quantitative",
+            "title": "Mean Expenditure (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "income_expenditure_gap",
+            "type": "quantitative",
+            "title": "Income-Expenditure Gap (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "spending_share",
+            "type": "quantitative",
+            "title": "Expenditure Share of Mean Income",
+            "format": ".1%"
+          }
+        ]
       }
     },
     {
@@ -142,15 +171,10 @@
           "sort": {
             "field": "expenditure_mean_num",
             "order": "descending"
-          },
-          "title": null,
-          "axis": {
-            "labelLimit": 220,
-            "labelFontSize": 12
           }
         },
         "x": {
-          "field": "amount_value",
+          "field": "expenditure_mean_num",
           "type": "quantitative",
           "title": "Monthly Household Amount (RM), 2022",
           "scale": {
@@ -158,28 +182,10 @@
               0,
               14000
             ]
-          },
-          "axis": {
-            "format": ",.0f",
-            "tickCount": 6,
-            "grid": true
           }
         },
         "color": {
-          "field": "measure_label",
-          "type": "nominal",
-          "title": null,
-          "scale": {
-            "domain": [
-              "Mean Income",
-              "Mean Expenditure"
-            ],
-            "range": [
-              "#8c2f39",
-              "#4f647a"
-            ]
-          },
-          "legend": null
+          "value": "#4f647a"
         },
         "size": {
           "condition": {

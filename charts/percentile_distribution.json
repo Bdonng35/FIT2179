@@ -1,18 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 420,
-  "params": [
-    {
-      "name": "Year",
-      "value": 2024,
-      "bind": {
-        "input": "select",
-        "options": [2019, 2022, 2024],
-        "name": "Year: "
-      }
-    }
-  ],
+  "width": "container",
+  "height": 350,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
   "data": {
     "url": "data/hies_malaysia_percentile.csv"
   },
@@ -25,7 +18,7 @@
       "as": "year_num"
     },
     {
-      "filter": "datum.year_num == Year"
+      "filter": "datum.year_num == 2024"
     },
     {
       "calculate": "toNumber(datum.percentile)",
@@ -165,7 +158,7 @@
       "data": {
         "values": [
           {
-            "note": "Across all shown years, mean income at the\n99th percentile is about twice the 90th."
+            "note": "In 2024, mean income at the\n99th percentile is about twice the 90th."
           }
         ]
       },
@@ -251,6 +244,41 @@
         "fontWeight": "700",
         "lineBreak": "\n",
         "color": "#2f2f2f",
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 5,
+            "y": 55000,
+            "note": "Decile Disparity (T10 vs B40):\nThe top 10% (T10) of Malaysian households\ncommand more household income than the entire\nbottom 40% (B40) combined, emphasizing that\nnational average growth is highly concentrated at the top."
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "fontSize": 11,
+        "fontWeight": "600",
+        "lineBreak": "\n",
+        "color": "#4f4330",
         "tooltip": false
       },
       "encoding": {
