@@ -133,6 +133,9 @@
                 <div class="income-col-main">
                     <div class="chart-block chart-block-wide income-ranking-block">
                         <div id="chart-income-ranking" class="vis-container income-ranking-panel"></div>
+                        <p class="interaction-note interaction-note-overlay">
+                            Click a state on the map or ranking chart to highlight it across both views and compare its position more clearly.
+                        </p>
                     </div>
                 </div>
                 <aside class="income-col-side income-bottom-side">
@@ -157,30 +160,68 @@
             </div>
         </section>
 
-        <section class="story-section">
+        <section class="story-section section-poverty">
 
             <h2>Section 3: Poverty</h2>
-            <p class="section-text">
-                Income differences matter because lower prosperity is often tied to greater vulnerability.
-                Poverty data helps show where economic hardship remains concentrated.
-            </p>
-
-            <div class="chart-block">
-                <h3>Poverty Rate Map</h3>
-                <p class="chart-caption">
-                    A poverty map reveals where households remain more exposed to economic hardship despite broader
-                    national growth.
-                </p>
-                <div id="chart-poverty-map" class="vis-container"></div>
+            <div class="income-row poverty-row-top">
+                <div class="income-col-main">
+                    <div class="chart-block chart-block-wide poverty-map-block">
+                        <h3>Poverty Rate Map</h3>
+                        <div id="chart-poverty-map" class="vis-container income-map-panel poverty-map-panel"></div>
+                    </div>
+                </div>
+                <aside class="income-col-side poverty-top-side">
+                    <div class="income-top-module">
+                        <div class="income-map-legend poverty-map-legend" aria-label="Absolute poverty rate band legend">
+                            <div class="income-map-legend-title">Absolute Poverty Rate Band</div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch poverty-legend-1"></span><span>Below 2%</span></div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch poverty-legend-2"></span><span>2% to 4.9%</span></div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch poverty-legend-3"></span><span>5% to 7.9%</span></div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch poverty-legend-4"></span><span>8% to 11.9%</span></div>
+                            <div class="income-map-legend-item"><span class="income-map-swatch poverty-legend-5"></span><span>12% and above</span></div>
+                        </div>
+                        <p class="chart-caption income-side-intro">
+                            Income differences matter because lower prosperity is often tied to greater vulnerability.
+                            Poverty data helps show where economic hardship remains concentrated.
+                        </p>
+                        <p class="income-side-note">
+                            Note: States with lower household incomes are often more exposed to deeper hardship.
+                        </p>
+                    </div>
+                </aside>
             </div>
 
-            <div class="chart-block">
-                <h3>Income Versus Poverty</h3>
-                <p class="chart-caption">
-                    Comparing income with poverty shows how strongly prosperity and deprivation are linked across
-                    states.
-                </p>
-                <div id="chart-income-poverty" class="vis-container"></div>
+            <div class="income-row poverty-row-bottom">
+                <div class="income-col-main">
+                    <div class="chart-block chart-block-wide poverty-compare-block">
+                        <div id="chart-income-poverty" class="vis-container income-ranking-panel poverty-compare-panel"></div>
+                    </div>
+                </div>
+                <aside class="income-col-side poverty-bottom-side">
+                    <div class="income-map-legend poverty-scatter-legend" aria-label="Income poverty scatter legend">
+                        <div class="income-map-legend-title">State Group</div>
+                        <div class="income-map-legend-item poverty-scatter-item"><span class="income-map-swatch poverty-scatter-1"></span><span>Lower income, higher poverty</span></div>
+                        <div class="income-map-legend-item poverty-scatter-item"><span class="income-map-swatch poverty-scatter-2"></span><span>Higher income, higher poverty</span></div>
+                        <div class="income-map-legend-item poverty-scatter-item"><span class="income-map-swatch poverty-scatter-3"></span><span>Lower income, lower poverty</span></div>
+                        <div class="income-map-legend-item poverty-scatter-item"><span class="income-map-swatch poverty-scatter-4"></span><span>Higher income, lower poverty</span></div>
+                    </div>
+                    <div class="income-insights-grid income-map-insights">
+                        <div class="income-insight-card">
+                            <h4>Higher Poverty States</h4>
+                            <p>
+                                States with higher poverty rates tend to be those where household incomes remain weaker and
+                                economic vulnerability is more persistent.
+                            </p>
+                        </div>
+                        <div class="income-insight-card">
+                            <h4>Lower Poverty States</h4>
+                            <p>
+                                States with lower poverty rates generally benefit from stronger incomes, more urban jobs,
+                                and broader access to economic opportunities.
+                            </p>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </section>
 

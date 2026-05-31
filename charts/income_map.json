@@ -145,12 +145,12 @@
     {
       "data": {
         "values": [
-          {"label": "Kedah", "lon": 100.55, "lat": 6.15},
-          {"label": "Kelantan", "lon": 102.2, "lat": 6.0},
-          {"label": "Perak", "lon": 101.0, "lat": 4.8},
-          {"label": "Selangor", "lon": 101.48, "lat": 3.58},
-          {"label": "Kuala Lumpur", "lon": 101.58, "lat": 3.18},
-          {"label": "Putrajaya", "lon": 101.28, "lat": 2.83}
+          {"label": "Kedah", "lon": 100, "lat": 6.15},
+          {"label": "Kelantan", "lon": 101.3, "lat": 5.2},
+          {"label": "Perak", "lon": 100.5, "lat": 4.8},
+          {"label": "Selangor", "lon": 100.9, "lat": 3.88},
+          {"label": "Kuala Lumpur", "lon": 101, "lat": 3.38},
+          {"label": "Putrajaya", "lon": 101, "lat": 2.75}
         ]
       },
       "mark": {
@@ -179,6 +179,10 @@
           "type": "nominal"
         },
         "color": {
+          "condition": {
+            "test": "datum.label_tone === 'light'",
+            "value": "#f6e3a1"
+          },
           "value": "#000000"
         },
         "opacity": {

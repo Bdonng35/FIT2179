@@ -40,8 +40,8 @@
         "type": "rule",
         "stroke": "#c8b8a2",
         "strokeDash": [5, 4],
-        "strokeWidth": 1.3,
-        "opacity": 0.8
+        "strokeWidth": 1.6,
+        "opacity": 0.92
       },
       "encoding": {
         "x": {
@@ -67,7 +67,7 @@
         "baseline": "bottom",
         "dx": 8,
         "fontSize": 10.5,
-        "fontWeight": "600",
+        "fontWeight": "900",
         "color": "#8b7d69",
         "tooltip": false
       },
@@ -98,8 +98,8 @@
         "type": "rule",
         "stroke": "#c8b8a2",
         "strokeDash": [5, 4],
-        "strokeWidth": 1.3,
-        "opacity": 0.8
+        "strokeWidth": 1.6,
+        "opacity": 0.92
       },
       "encoding": {
         "y": {
@@ -113,7 +113,7 @@
       "data": {
         "values": [
           {
-            "x": 10250,
+            "x": 11920,
             "y": 6.2,
             "label": "National poverty rate"
           }
@@ -125,7 +125,7 @@
         "baseline": "bottom",
         "dy": -6,
         "fontSize": 10.5,
-        "fontWeight": "600",
+        "fontWeight": "700",
         "color": "#8b7d69",
         "tooltip": false
       },
@@ -150,22 +150,26 @@
           {
             "x": 3600,
             "y": 18.0,
-            "label": "Lower income,\nhigher poverty\n6 states"
+            "label": "Lower income,\nhigher poverty\n6 states",
+            "group": "Lower income, higher poverty"
           },
           {
             "x": 7950,
             "y": 18.0,
-            "label": "Higher income,\nhigher poverty\nNo states"
+            "label": "Higher income,\nhigher poverty\nNo states",
+            "group": "Higher income, higher poverty"
           },
           {
             "x": 3600,
             "y": 1.6,
-            "label": "Lower income,\nlower poverty\n4 states"
+            "label": "Lower income,\nlower poverty\n4 states",
+            "group": "Lower income, lower poverty"
           },
           {
             "x": 7950,
             "y": 1.6,
-            "label": "Higher income,\nlower poverty\n6 states"
+            "label": "Higher income,\nlower poverty\n6 states",
+            "group": "Higher income, lower poverty"
           }
         ]
       },
@@ -173,11 +177,11 @@
         "type": "text",
         "align": "left",
         "baseline": "middle",
-        "fontSize": 9.5,
-        "fontWeight": "600",
+        "fontSize": 11.0,
+        "fontWeight": "700",
         "lineBreak": "\n",
         "color": "#8b7d69",
-        "opacity": 0.78,
+        "opacity": 0.92,
         "tooltip": false
       },
       "encoding": {
@@ -233,7 +237,25 @@
           "value": 95
         },
         "opacity": {
-          "value": 0.78
+          "condition": [
+            {
+              "test": "datum.quadrant_group === 'Lower income, higher poverty'",
+              "value": 1
+            },
+            {
+              "test": "datum.quadrant_group === 'Higher income, higher poverty'",
+              "value": 1
+            },
+            {
+              "test": "datum.quadrant_group === 'Lower income, lower poverty'",
+              "value": 0.4
+            },
+            {
+              "test": "datum.quadrant_group === 'Higher income, lower poverty'",
+              "value": 0.4
+            }
+          ],
+          "value": 1
         },
         "color": {
           "field": "quadrant_group",
@@ -250,15 +272,10 @@
               "#c57a63",
               "#9c8b76",
               "#7f94b0",
-              "#5f8577"
+              "#7e73a8"
             ]
           },
-          "legend": {
-            "orient": "top",
-            "direction": "horizontal",
-            "columns": 2,
-            "symbolType": "circle"
-          }
+          "legend": null
         },
         "tooltip": [
           {
@@ -288,6 +305,42 @@
       }
     },
     {
+      "data": {
+        "values": [
+          {
+            "x": 400,
+            "y": 5.05,
+            "note": "Lower income does not always\ntranslate into higher poverty.\nSome states remain modest in\nincome, yet avoid deeper hardship,\nsuggesting that cost of living and\nlocal support structures also\nshape vulnerability."
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "fontSize": 11,
+        "fontWeight": "1000",
+        "lineBreak": "\n",
+        "color": "#053a7f",
+        "opacity": 0.98,
+        "tooltip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    },
+    {
       "transform": [
         {
           "filter": "datum.state != 'Putrajaya' && datum.state != 'Kuala Lumpur' && datum.state != 'Pulau Pinang' && datum.state != 'Perlis' && datum.state != 'Melaka' && datum.state != 'Pahang'"
@@ -296,7 +349,7 @@
       "mark": {
         "type": "text",
         "fontSize": 11,
-        "fontWeight": "600",
+        "fontWeight": "650",
         "color": "#3a3a3a",
         "align": "center",
         "baseline": "bottom",
@@ -326,7 +379,7 @@
       "mark": {
         "type": "text",
         "fontSize": 11,
-        "fontWeight": "600",
+        "fontWeight": "650",
         "color": "#3a3a3a",
         "align": "center",
         "baseline": "top",
@@ -356,7 +409,7 @@
       "mark": {
         "type": "text",
         "fontSize": 11,
-        "fontWeight": "600",
+        "fontWeight": "650",
         "color": "#3a3a3a",
         "align": "left",
         "baseline": "middle",
@@ -386,7 +439,7 @@
       "mark": {
         "type": "text",
         "fontSize": 11,
-        "fontWeight": "600",
+        "fontWeight": "650",
         "color": "#3a3a3a",
         "align": "right",
         "baseline": "middle",
@@ -416,7 +469,7 @@
       "mark": {
         "type": "text",
         "fontSize": 11,
-        "fontWeight": "600",
+        "fontWeight": "650",
         "color": "#3a3a3a",
         "align": "center",
         "baseline": "top",

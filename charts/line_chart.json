@@ -69,7 +69,9 @@
                 "direction": "horizontal",
                 "columns": 2,
                 "legendX": 20,
-                "legendY": 8
+                "legendY": 8,
+                "labelFontSize": 13,
+                "titleFontSize": 13
             }
         }
     },

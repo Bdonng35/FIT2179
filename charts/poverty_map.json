@@ -1,11 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 320,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "width": "container",
+  "height": 370,
+  "padding": 0,
   "projection": {
     "type": "mercator",
-    "center": [109.5, 4.0],
-    "scale": 1910
+    "center": [109.3, 3.7],
+    "scale": 2000
   },
   "layer": [
     {
@@ -102,11 +107,7 @@
             "domain": [1, 2, 3, 4, 5],
             "range": ["#fff1dd", "#f6c78e", "#ec9a5e", "#d96b3b", "#b13c2e"]
           },
-          "legend": {
-            "symbolType": "square",
-            "values": [1, 2, 3, 4, 5],
-            "labelExpr": "datum.label == '1' ? 'Below 2%' : datum.label == '2' ? '2% to 4.9%' : datum.label == '3' ? '5% to 7.9%' : datum.label == '4' ? '8% to 11.9%' : '12% and above'"
-          }
+          "legend": null
         },
         "tooltip": [
           {

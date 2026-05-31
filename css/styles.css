@@ -138,6 +138,14 @@ h4 {
   max-width: 58ch;
 }
 
+.section-income {
+  margin-bottom: -20px;
+}
+
+.section-poverty {
+  margin-bottom: 44px;
+}
+
 .income-row {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
@@ -256,6 +264,7 @@ h4 {
 
 .income-ranking-block {
   margin-bottom: 0;
+  position: relative;
 }
 
 .income-row-bottom {
@@ -265,6 +274,50 @@ h4 {
 .income-bottom-side {
   justify-content: flex-start;
   padding-top: 0;
+}
+
+.interaction-note {
+  max-width: 34ch;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #5a4c34;
+}
+
+.interaction-note-overlay {
+  position: absolute;
+  right: 18px;
+  bottom: 128px;
+  max-width: 24ch;
+  margin: 0;
+  text-align: left;
+}
+
+.poverty-row-top {
+  margin-bottom: 0;
+  align-items: stretch;
+}
+
+.poverty-top-side {
+  padding-top: 36px;
+}
+
+.poverty-row-bottom {
+  margin-top: -56px;
+}
+
+.poverty-bottom-side {
+  justify-content: flex-start;
+  padding-top: 0;
+}
+
+.poverty-scatter-legend {
+  margin-bottom: 0px;
+  gap: 5px;
+}
+
+.poverty-map-block,
+.poverty-compare-block {
+  margin-bottom: 0;
 }
 
 .legend-1 {
@@ -285,6 +338,42 @@ h4 {
 
 .legend-5 {
   background-color: #6f4e1f;
+}
+
+.poverty-legend-1 {
+  background-color: #fff1dd;
+}
+
+.poverty-legend-2 {
+  background-color: #f6c78e;
+}
+
+.poverty-legend-3 {
+  background-color: #ec9a5e;
+}
+
+.poverty-legend-4 {
+  background-color: #d96b3b;
+}
+
+.poverty-legend-5 {
+  background-color: #b13c2e;
+}
+
+.poverty-scatter-1 {
+  background-color: #c57a63;
+}
+
+.poverty-scatter-2 {
+  background-color: #9c8b76;
+}
+
+.poverty-scatter-3 {
+  background-color: #7f94b0;
+}
+
+.poverty-scatter-4 {
+  background-color: #7e73a8;
 }
 
 .section-two-up .chart-block {
